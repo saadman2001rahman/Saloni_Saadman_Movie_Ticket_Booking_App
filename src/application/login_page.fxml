@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MovieTicketController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="username" />
+            <TextField fx:id="login_page_username_field" promptText="username" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="password" />
+            <TextField fx:id="login_page_password_field" />
+         </children>
+      </HBox>
+      <Button fx:id="login_page_login_button" mnemonicParsing="false" onAction="#check_login" text="Login" />
+   </children>
+</VBox>
