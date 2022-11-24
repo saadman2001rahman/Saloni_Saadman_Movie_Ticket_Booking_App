@@ -16,7 +16,9 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			VBox root = loader.load(new FileInputStream("src/application/login_page.fxml"));
-			
+			MovieTicketController controller = (MovieTicketController) loader.getController();
+			controller.applicationStage = primaryStage;
+
 			Scene scene = new Scene(root,400,400);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -27,5 +29,5 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
-	}
+	}  
 }
