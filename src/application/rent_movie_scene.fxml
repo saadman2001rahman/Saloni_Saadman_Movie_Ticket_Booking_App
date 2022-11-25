@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MovieTicketController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ChoiceBox fx:id="movies_choicebox" prefWidth="150.0" />
+            <Button fx:id="rent_movies_button" mnemonicParsing="false" onAction="#movie_selected" text="rent" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie 1" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie 2" />
+         </children>
+      </HBox>
+	  <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie 3" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie 4" />
+         </children>
+      </HBox>
+      
+   </children>
+</VBox>

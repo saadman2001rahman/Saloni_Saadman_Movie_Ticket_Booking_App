@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.MovieTicketController">
+   <children>
+      <Label text="movie name" />
+      <Label text="movie rent in $$" />
+      <Label text="we pull movie info from array" />
+      
+      <Button fx:id="confirm_rent" mnemonicParsing="false" text="confirm button" />
+   </children>
+</VBox>
