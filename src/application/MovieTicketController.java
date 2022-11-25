@@ -43,6 +43,8 @@ public class MovieTicketController {
     	/**
     	 * Activates after login button is pressed in the first login scene. This will check whether username and password match with ones from record, and if they match, it will change the scene to one where there will be a list of movies to choose from.
     	 */
+    	
+    	Scene home_scene = applicationStage .getScene();
     	String user_name = login_page_username_field.getText();
     	String password = login_page_password_field.getText();
     	boolean successful_login = true;
@@ -89,6 +91,10 @@ public class MovieTicketController {
     	
     	applicationStage.setScene(movie_info_scene);
     }
+    
+//    void go_to_home_page(ActionEvent going_to_home_page) {
+//    	applicationStage.setScene()
+//    }
 }
 
 
