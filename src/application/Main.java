@@ -21,7 +21,7 @@ public class Main extends Application {
 
 			Scene scene = new Scene(root,400,400);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("a title");
+			primaryStage.setTitle(" come watch a movie");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
