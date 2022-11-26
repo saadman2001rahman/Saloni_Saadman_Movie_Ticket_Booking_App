@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox prefHeight="297.0" prefWidth="398.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.AdminController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie name" />
+            <TextField fx:id="admin_movie_name" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie genres" />
+            <TextField fx:id="admin_movie_genre" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie length in minutes" />
+            <TextField fx:id="admin_movie_len" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Base price" />
+            <TextField fx:id="admin_movie_base_price" />
+         </children>
+      </HBox>
+      <Button fx:id="add_movie_button" mnemonicParsing="false" onAction="#add_the_movie" text="Add movie" />
+   </children>
+</VBox>
