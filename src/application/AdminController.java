@@ -42,7 +42,7 @@ public class AdminController {
 	    String movieLen = (String) admin_movie_len.getText();
 	    String moviePrice = (String) admin_movie_base_price.getText();
 	    
-	    String specialChar = "--**--";
+	    String specialChar = "%%%";
 	    
 	    String movie_representaion = movieName + specialChar + movieGenre + specialChar + movieLen + specialChar + moviePrice;
 	    	
