@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MovieTicketController">
+<VBox prefHeight="279.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MovieTicketController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -20,5 +20,6 @@
          </children>
       </HBox>
       <Button fx:id="login_page_login_button" mnemonicParsing="false" onAction="#check_login" text="Login" />
+      <Button fx:id="new_acc_button" mnemonicParsing="false" onAction="#make_customer_account" text="Make a new Account" />
    </children>
 </VBox>

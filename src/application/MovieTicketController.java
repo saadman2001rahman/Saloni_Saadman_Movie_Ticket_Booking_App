@@ -26,6 +26,8 @@ public class MovieTicketController {
 	private Scene myScene;
 	
 	private AdminController theadmincontrols;
+	
+	private New_Customer_Controller newcustomercontrols;
 
     @FXML
     private TextField login_page_username_field;
@@ -41,6 +43,8 @@ public class MovieTicketController {
     
     @FXML
     private Button rent_movies_button;
+    
+    @FXML Button new_acc_button;
         
     @FXML
     void check_login(ActionEvent event) {
@@ -71,9 +75,16 @@ public class MovieTicketController {
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
-    	}
     		
     		theadmincontrols.changethescene();
+
+    	} else {
+    		if (checkuser(user_name, password)) {
+    			System.out.println("yes");
+    		}
+    	}
+    	
+    		
     	} 
 //    	else {
 //
@@ -92,7 +103,29 @@ public class MovieTicketController {
 //	    	}
 //    	}
 //    }
-//    
+    
+    @FXML
+    void make_customer_account(ActionEvent thisisanewcustomer) {
+		try {
+    		FXMLLoader newcustomerloader = new FXMLLoader();
+    		VBox newcustomerscene = newcustomerloader.load(new FileInputStream("src/application/new_customer_scene.fxml"));
+    		
+    		newcustomercontrols = newcustomerloader.getController();
+    		newcustomercontrols.setPrimaryStage(applicationStage);
+    		newcustomercontrols.setMyScene(new Scene(newcustomerscene));
+    		newcustomercontrols.setNextController(this);
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		newcustomercontrols.changethescene();
+    } 
+    
+    boolean checkuser(String name, String pass) {
+    	return true;
+    }
+    
     void setMyScene(Scene ascene) {
     	myScene = ascene;
     }
