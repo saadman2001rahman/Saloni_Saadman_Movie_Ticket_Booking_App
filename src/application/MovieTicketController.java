@@ -1,9 +1,12 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -47,7 +50,7 @@ public class MovieTicketController {
     @FXML Button new_acc_button;
         
     @FXML
-    void check_login(ActionEvent event) {
+    void check_login(ActionEvent event) throws IOException {
     	/**
     	 * Activates after login button is pressed in the first login scene. This will check whether username and password match with ones from record, and if they match, it will change the scene to one where there will be a list of movies to choose from.
     	 */
@@ -78,31 +81,29 @@ public class MovieTicketController {
     		
     		theadmincontrols.changethescene();
 
-    	} else {
+    	} 
+    	else {
     		if (checkuser(user_name, password)) {
-    			System.out.println("yes");
+		    	try {
+		    		FXMLLoader file_loader = new FXMLLoader();
+		        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/search_movie.fxml"));
+		        	
+		        	movie_scene = new Scene(search_movie_container);
+		
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+		    	
+		    	if (successful_login) {
+		    		applicationStage.setScene(movie_scene);
+		    	}
     		}
     	}
+    }
+
     	
     		
-    	} 
-//    	else {
-//
-//	    	try {
-//	    		FXMLLoader file_loader = new FXMLLoader();
-//	        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/search_movie.fxml"));
-//	        	
-//	        	movie_scene = new Scene(search_movie_container);
-//	
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//			}
-//	    	
-//	    	if (successful_login) {
-//	    		applicationStage.setScene(movie_scene);
-//	    	}
-//    	}
-//    }
+    	
     
     @FXML
     void make_customer_account(ActionEvent thisisanewcustomer) {
@@ -120,10 +121,23 @@ public class MovieTicketController {
 		}
 		
 		newcustomercontrols.changethescene();
-    } 
+    }
     
-    boolean checkuser(String name, String pass) {
-    	return true;
+    boolean checkuser(String name, String pass) throws IOException {
+    	BufferedReader reader = new BufferedReader(new FileReader("src/application/List_of_customers.txt"));
+    	String line = reader.readLine();
+    	while (line != null) {
+    		String username = line.split("%%%")[0];
+    		String password = line.split("%%%")[1];
+    		
+    		if (username.equals(name) && password.equals(pass)) {
+    			reader.close();
+    			return true;
+    		}   
+    		line = reader.readLine();
+    	}
+    	reader.close();
+    	return false;
     }
     
     void setMyScene(Scene ascene) {

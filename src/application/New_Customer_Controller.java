@@ -72,6 +72,7 @@ public class New_Customer_Controller {
 	public void setPrimaryStage(Stage astage) {
 		applicationStage = astage;		
 	}
+	
 
 	public void setNextController(MovieTicketController acontroller) {
 		nextController = acontroller;
