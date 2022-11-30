@@ -94,9 +94,10 @@ public class MovieTicketController {
 					e.printStackTrace();
 				}
 		    	
-		    	if (successful_login) {
-		    		applicationStage.setScene(movie_scene);
-		    	}
+		    	applicationStage.setScene(movie_scene);
+		    	
+    		} else {
+    			System.out.println("Creds not right");
     		}
     	}
     }
