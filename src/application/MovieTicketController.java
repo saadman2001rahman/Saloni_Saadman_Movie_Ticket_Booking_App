@@ -1,9 +1,12 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -26,6 +29,8 @@ public class MovieTicketController {
 	private Scene myScene;
 	
 	private AdminController theadmincontrols;
+	
+	private New_Customer_Controller newcustomercontrols;
 
     @FXML
     private TextField login_page_username_field;
@@ -41,9 +46,11 @@ public class MovieTicketController {
     
     @FXML
     private Button rent_movies_button;
+    
+    @FXML Button new_acc_button;
         
     @FXML
-    void check_login(ActionEvent event) {
+    void check_login(ActionEvent event) throws IOException {
     	/**
     	 * Activates after login button is pressed in the first login scene. This will check whether username and password match with ones from record, and if they match, it will change the scene to one where there will be a list of movies to choose from.
     	 */
@@ -71,28 +78,69 @@ public class MovieTicketController {
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
-    	}
     		
     		theadmincontrols.changethescene();
+
     	} 
-//    	else {
-//
-//	    	try {
-//	    		FXMLLoader file_loader = new FXMLLoader();
-//	        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/search_movie.fxml"));
-//	        	
-//	        	movie_scene = new Scene(search_movie_container);
-//	
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//			}
-//	    	
-//	    	if (successful_login) {
-//	    		applicationStage.setScene(movie_scene);
-//	    	}
-//    	}
-//    }
-//    
+    	else {
+    		if (checkuser(user_name, password)) {
+		    	try {
+		    		FXMLLoader file_loader = new FXMLLoader();
+		        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
+		        	
+		        	movie_scene = new Scene(search_movie_container);
+		
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+		    	
+		    	applicationStage.setScene(movie_scene);
+		    	
+    		} else {
+    			System.out.println("Creds not right");
+    		}
+    	}
+    }
+
+    	
+    		
+    	
+    
+    @FXML
+    void make_customer_account(ActionEvent thisisanewcustomer) {
+		try {
+    		FXMLLoader newcustomerloader = new FXMLLoader();
+    		VBox newcustomerscene = newcustomerloader.load(new FileInputStream("src/application/new_customer_scene.fxml"));
+    		
+    		newcustomercontrols = newcustomerloader.getController();
+    		newcustomercontrols.setPrimaryStage(applicationStage);
+    		newcustomercontrols.setMyScene(new Scene(newcustomerscene));
+    		newcustomercontrols.setNextController(this);
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		newcustomercontrols.changethescene();
+    }
+    
+    boolean checkuser(String name, String pass) throws IOException {
+    	BufferedReader reader = new BufferedReader(new FileReader("src/application/List_of_customers.txt"));
+    	String line = reader.readLine();
+    	while (line != null) {
+    		String username = line.split("%%%")[0];
+    		String password = line.split("%%%")[1];
+    		
+    		if (username.equals(name) && password.equals(pass)) {
+    			reader.close();
+    			return true;
+    		}   
+    		line = reader.readLine();
+    	}
+    	reader.close();
+    	return false;
+    }
+    
     void setMyScene(Scene ascene) {
     	myScene = ascene;
     }

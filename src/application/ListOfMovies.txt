@@ -1,1 +1,3 @@
-Movie 2--**--adventure, action--**--120--**--15
+Movie 1%%%action%%%120%%%15
+movie 2%%%adventure%%%110%%%10
+movie 3%%%comedy%%%100%%%5

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="461.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfirmController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie Name: " />
+            <Label fx:id="confirm_name" text="this is the name of the movie" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie genre: " />
+            <Label fx:id="confirm_genre" text="these are the movie genres" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Theatre Name: " />
+            <Label fx:id="confirm_theatre" text="this is the name of the theatre" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Total Price:  " />
+            <Label fx:id="confirm_price" text="this is the total price" />
+         </children>
+      </HBox>
+      <Button fx:id="confirm_button" mnemonicParsing="false" onAction="#movie_confirmed" text="Confirm" />
+      <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#movie_cancelled" prefHeight="31.0" prefWidth="73.0" text="Cancel" />
+   </children>
+</VBox>

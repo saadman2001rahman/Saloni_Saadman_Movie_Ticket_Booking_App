@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="315.0" prefWidth="385.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.New_Customer_Controller">
+   <children>
+      <HBox prefHeight="58.0" prefWidth="385.0">
+         <children>
+            <Label text="Enteryour name" />
+            <TextField fx:id="new_customer_name" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Enter your age" />
+            <TextField fx:id="new_customer_age" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Enter unique userID" />
+            <TextField fx:id="new_userID" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Enter password" />
+            <TextField fx:id="new_customer_pass" />
+         </children>
+      </HBox>
+      <Button fx:id="create_account_button" mnemonicParsing="false" onAction="#create_account" text="Create new account" />
+   </children>
+</VBox>
