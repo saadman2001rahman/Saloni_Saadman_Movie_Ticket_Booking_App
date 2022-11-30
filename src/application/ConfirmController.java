@@ -47,6 +47,7 @@ public class ConfirmController {
     		nextController.setPrimaryStage(applicationStage);
     		nextController.setMyScene(new Scene(finalScene));
     		
+    		
         	nextController.setNameOfCustomer("Saadman");
         	nextController.setNameOfTheatre("Cinemax");
         	nextController.setDateAndTime();
