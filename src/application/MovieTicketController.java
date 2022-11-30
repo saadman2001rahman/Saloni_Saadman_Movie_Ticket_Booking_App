@@ -86,7 +86,7 @@ public class MovieTicketController {
     		if (checkuser(user_name, password)) {
 		    	try {
 		    		FXMLLoader file_loader = new FXMLLoader();
-		        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/search_movie.fxml"));
+		        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
 		        	
 		        	movie_scene = new Scene(search_movie_container);
 		
