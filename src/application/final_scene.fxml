@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.MovieTicketController">
+<VBox prefHeight="198.0" prefWidth="593.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.FinalSceneController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Summary " />
+            <Label text="Movie Ticket" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie name, and all movie info" />
+            <Label text="Theatre: " />
+            <Label fx:id="final_theatre_name" text="this will be the theatre number" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Seating arrangement" />
+            <Label text="Date: " />
+            <Label fx:id="final_date_and_time" text="this will be the Date and Time" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="total cost" />
+            <Label text="Price:" />
+            <Label fx:id="final_price" text="this will be the price" />
          </children>
       </HBox>
-      <Button fx:id="home_page_button" mnemonicParsing="false" onAction="#go_to_home_page" text="Go to home page" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="final_name_of_movie" text="This will be the movie name" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="For: " />
+            <Label fx:id="final_name_of_customer" text="this will be the Customer name" />
+         </children>
+      </HBox>
    </children>
 </VBox>

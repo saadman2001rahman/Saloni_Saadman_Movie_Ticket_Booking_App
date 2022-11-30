@@ -1,1 +1,5 @@
-test--**--action--**--120--**--15
+Action Movie 1%%%action%%%120%%%15
+Action Movie 2%%%action%%%110%%%10
+Adventure Movie 1%%%adventure%%%120%%%12
+Adventure Movie 2%%%adventure%%%110%%%10
+movie 1%%%action%%%120%%%15
