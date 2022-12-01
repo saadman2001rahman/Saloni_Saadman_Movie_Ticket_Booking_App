@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -20,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -48,6 +51,7 @@ public class MovieTicketController {
     private Button rent_movies_button;
     
     @FXML Button new_acc_button;
+    
         
     @FXML
     void check_login(ActionEvent event) throws IOException {
@@ -75,6 +79,7 @@ public class MovieTicketController {
         		theadmincontrols.setMyScene(new Scene(adminscene));
         		theadmincontrols.setNextController(this);
         		
+        		
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
@@ -84,18 +89,38 @@ public class MovieTicketController {
     	} 
     	else {
     		if (checkuser(user_name, password)) {
-		    	try {
-		    		FXMLLoader file_loader = new FXMLLoader();
-		        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
-		        	
-		        	movie_scene = new Scene(search_movie_container);
-		
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
+//		    	try {
+//		    		FXMLLoader file_loader = new FXMLLoader();
+//		        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
+//		        	
+//		        	movie_scene = new Scene(search_movie_container);
+//		    		
+//		    		
+//		
+//				} catch(Exception e) {
+//					e.printStackTrace();
+//				}		    	
+//		    	applicationStage.setScene(movie_scene);
+		    	ArrayList<HBox> allMovieNames = getAllMovies();
+		    	int moviesadded = 0;
+		    	int totalMovies = allMovieNames.size();
 		    	
-		    	applicationStage.setScene(movie_scene);
-		    	
+    			VBox moviecontainer = new VBox();
+    			while (moviesadded < totalMovies) {
+//    				HBox movieContainer = new HBox();
+//    				Label movieLabel = new Label(allMovieNames.get(moviesadded));
+    				
+//    				movieContainer.getChildren().add(movieLabel);
+    				
+    				
+    				moviecontainer.getChildren().add(allMovieNames.get(moviesadded));
+    				moviesadded++;
+
+    			}
+    			
+    			Scene allmoviescene = new Scene(moviecontainer, 800, 800);
+    			applicationStage.setScene(allmoviescene);
+    			
     		} else {
     			System.out.println("Creds not right");
     		}
@@ -116,6 +141,7 @@ public class MovieTicketController {
     		newcustomercontrols.setPrimaryStage(applicationStage);
     		newcustomercontrols.setMyScene(new Scene(newcustomerscene));
     		newcustomercontrols.setNextController(this);
+    		
     		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -139,6 +165,33 @@ public class MovieTicketController {
     	}
     	reader.close();
     	return false;
+    }
+    
+    ArrayList<HBox> getAllMovies() throws IOException {
+    	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
+    	String line = reader.readLine();
+    	ArrayList<HBox> movielist = new ArrayList<HBox>();
+    	
+    	while (line != null) {
+    		
+    		HBox moviecontainer = new HBox();
+    		Label moviename = new Label(line.split("%%%")[0]);
+    		Label moviegenre = new Label(line.split("%%%")[1]);
+    		Label movieprice = new Label(line.split("%%%")[3]);
+//    		Label movietheatre = new Label(line.split("%%%")[0]);
+    		Label movieduration = new Label(line.split("%%%")[2]);
+//    		Label movierating = new Label(line.split("%%%")[0]);
+    		
+    		moviecontainer.getChildren().addAll(moviename, moviegenre, movieduration, movieprice);
+
+    		
+//    		String movieName = line.split("%%%")[0];
+    		movielist.add(moviecontainer);
+    		
+    		line = reader.readLine();
+    	}
+    	reader.close();
+    	return movielist;
     }
     
     void setMyScene(Scene ascene) {
