@@ -28,6 +28,12 @@ public class AdminController {
     @FXML
     private TextField admin_movie_len;
     
+    @FXML
+    private TextField admin_movie_rating;
+
+    @FXML
+    private TextField admin_theatre;
+
     private Stage applicationStage;
     
     private Scene myScene;
@@ -41,10 +47,12 @@ public class AdminController {
 	    String movieGenre = admin_movie_genre.getText();
 	    String movieLen = (String) admin_movie_len.getText();
 	    String moviePrice = (String) admin_movie_base_price.getText();
+	    String movieTheatre = admin_theatre.getText();
+	    String movie_rating = admin_movie_rating.getText();
 	    
 	    String specialChar = "%%%";
 	    
-	    String movie_representaion = movieName + specialChar + movieGenre + specialChar + movieLen + specialChar + moviePrice;
+	    String movie_representaion = movieName + specialChar + movieTheatre + specialChar + movie_rating + specialChar + movieLen + specialChar + moviePrice + specialChar + movieGenre;
 	    	
 	    BufferedWriter writer = new BufferedWriter(new FileWriter("src/application/ListOfMovies.txt", true));
 	    writer.write(movie_representaion + "\n");

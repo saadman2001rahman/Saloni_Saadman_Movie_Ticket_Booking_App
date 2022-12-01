@@ -14,6 +14,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -172,17 +173,31 @@ public class MovieTicketController {
     	String line = reader.readLine();
     	ArrayList<HBox> movielist = new ArrayList<HBox>();
     	
+    	Insets margin = new Insets(10, 10, 10, 10);
+    	
     	while (line != null) {
     		
     		HBox moviecontainer = new HBox();
     		Label moviename = new Label(line.split("%%%")[0]);
-    		Label moviegenre = new Label(line.split("%%%")[1]);
-    		Label movieprice = new Label(line.split("%%%")[3]);
-//    		Label movietheatre = new Label(line.split("%%%")[0]);
-    		Label movieduration = new Label(line.split("%%%")[2]);
-//    		Label movierating = new Label(line.split("%%%")[0]);
+    		Label moviegenre = new Label(line.split("%%%")[5]);
+    		Label movieprice = new Label(line.split("%%%")[4]);
+    		Label movietheatre = new Label(line.split("%%%")[1]);
+    		Label movieduration = new Label(line.split("%%%")[3]);
+    		Label movierating = new Label(line.split("%%%")[2]);
     		
-    		moviecontainer.getChildren().addAll(moviename, moviegenre, movieduration, movieprice);
+    		moviename.setPadding(margin);
+    		moviegenre.setPadding(margin);
+    		movieprice.setPadding(margin);
+    		movietheatre.setPadding(margin);
+    		movieduration.setPadding(margin);
+    		movierating.setPadding(margin);
+    		
+    		Button watchButton = new Button("Watch this");
+//    		watchButton.setOnAction(watch -> )
+    		
+
+    		
+    		moviecontainer.getChildren().addAll(moviename, movietheatre, movierating, movieduration, movieprice, moviegenre);
 
     		
 //    		String movieName = line.split("%%%")[0];

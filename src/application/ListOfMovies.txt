@@ -1,3 +1,2 @@
-Movie 1%%%action%%%120%%%15
-movie 2%%%adventure%%%110%%%10
-movie 3%%%comedy%%%100%%%5
+Movie 1%%%Cineplex%%%R%%%120%%%15%%%action
+Movie 2%%%IMax%%%G%%%100%%%10%%%action adventure
