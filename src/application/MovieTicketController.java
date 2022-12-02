@@ -35,6 +35,8 @@ public class MovieTicketController {
 	private AdminController theadmincontrols;
 	
 	private New_Customer_Controller newcustomercontrols;
+	
+	private ConfirmController confirmcontroller;
 
     @FXML
     private TextField login_page_username_field;
@@ -52,6 +54,10 @@ public class MovieTicketController {
     private Button rent_movies_button;
     
     @FXML Button new_acc_button;
+    
+    private Customer thiscustomer;
+    
+    private Movie thismovie;
     
         
     @FXML
@@ -160,6 +166,7 @@ public class MovieTicketController {
     		
     		if (username.equals(name) && password.equals(pass)) {
     			reader.close();
+    			thiscustomer = new Customer(username, password,Integer.parseInt(line.split("%%%")[3]), 0);
     			return true;
     		}   
     		line = reader.readLine();
@@ -171,6 +178,7 @@ public class MovieTicketController {
     ArrayList<HBox> getAllMovies() throws IOException {
     	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
     	String line = reader.readLine();
+    	String send = String.valueOf(line);
     	ArrayList<HBox> movielist = new ArrayList<HBox>();
     	
     	Insets margin = new Insets(10, 10, 10, 10);
@@ -193,11 +201,14 @@ public class MovieTicketController {
     		movierating.setPadding(margin);
     		
     		Button watchButton = new Button("Watch this");
-//    		watchButton.setOnAction(watch -> )
+    		
+    		watchButton.setOnAction(watch -> changetoconfirm(send, thiscustomer));
+    		watchButton.setPadding(margin);
+
     		
 
     		
-    		moviecontainer.getChildren().addAll(moviename, movietheatre, movierating, movieduration, movieprice, moviegenre);
+    		moviecontainer.getChildren().addAll(moviename, movietheatre, movierating, movieduration, movieprice, moviegenre, watchButton);
 
     		
 //    		String movieName = line.split("%%%")[0];
@@ -209,7 +220,42 @@ public class MovieTicketController {
     	return movielist;
     }
     
-    void setMyScene(Scene ascene) {
+    private void changetoconfirm(String selectedMovie, Customer acustomer) {
+		try {
+			
+    		FXMLLoader loader = new FXMLLoader();
+    		VBox confirm = loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
+    		
+    		String moviename = selectedMovie.split("%%%")[0];
+    		String moviegenre = selectedMovie.split("%%%")[5];
+    		String movieprice = selectedMovie.split("%%%")[4];
+    		String movietheatre = selectedMovie.split("%%%")[1];
+    		String movieduration = selectedMovie.split("%%%")[3];
+    		String movierating = selectedMovie.split("%%%")[2];
+    		
+    		thismovie = new Movie(moviename, moviegenre.split(" "), Integer.parseInt(movieduration), Double.parseDouble(movieprice), movietheatre);
+
+    		confirmcontroller = loader.getController();
+    		confirmcontroller.setPrimaryStage(applicationStage);
+    		confirmcontroller.setMyScene(new Scene(confirm));
+//    		confirmcontroller.setNextController(this);
+    		confirmcontroller.setCustomer(acustomer);
+    		confirmcontroller.setMovie(thismovie);
+    		
+    		confirmcontroller.changethescene();
+    		
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+
+
+
+
+	void setMyScene(Scene ascene) {
     	myScene = ascene;
     }
     

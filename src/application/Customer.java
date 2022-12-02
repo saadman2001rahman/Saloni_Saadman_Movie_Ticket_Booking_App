@@ -1,13 +1,13 @@
 package application;
 
 public class Customer {
-	private int userID;
+	private String userID;
 	private String customerName = "";
 	private int age;
 	
 	private double amountBalance;
 	
-	public Customer(int id, String name, int age, double amountBalance) {
+	public Customer(String id, String name, int age, double amountBalance) {
 		this.userID = id;
 		this.customerName = name;
 		this.age = age;
@@ -26,13 +26,13 @@ public class Customer {
 		return this.age;
 	}
 	
-	public void bookSeat(Movie movieName, Theater theater, Schedule date, Seat seatnum) {
-		BookingSystem book = new BookingSystem();
-		try {
-			book.bookMovieTicket(this.customerName, theater, date, seatNum);
-			book.calculateTotalPrice(movieName.getbasePrice());
-		}catch (Exception e) {
-			
-		}
-	}
+//	public void bookSeat(Movie movieName, Theater theater, Schedule date, Seat seatnum) {
+//		BookingSystem book = new BookingSystem();
+//		try {
+//			book.bookMovieTicket(customerName, theater, date, seatnum);
+//			book.calculateTotalPrice(movieName.getbasePrice());
+//		}catch (Exception e) {
+//			
+//		}
+//	}
 }

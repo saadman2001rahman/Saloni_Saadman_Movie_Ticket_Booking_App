@@ -36,6 +36,13 @@ public class ConfirmController {
     private MovieTicketController prevController;
     
     private Stage applicationStage;
+    
+    private Scene myScene;
+    
+    private Movie thismovie;
+    
+    private Customer thiscustomer;
+    
 
     @FXML
     void movie_confirmed(ActionEvent event) {
@@ -48,10 +55,10 @@ public class ConfirmController {
     		nextController.setMyScene(new Scene(finalScene));
     		
     		
-        	nextController.setNameOfCustomer("Saadman");
-        	nextController.setNameOfTheatre("Cinemax");
+        	nextController.setNameOfCustomer(thiscustomer.getCustName());
+        	nextController.setNameOfTheatre(thismovie.getTheatreName());
         	nextController.setDateAndTime();
-        	nextController.setNameOfMovie("Despicable me");
+        	nextController.setNameOfMovie(thismovie.getMovieName());
         	
         	System.out.println("This worked");
         	
@@ -70,5 +77,30 @@ public class ConfirmController {
     void movie_cancelled(ActionEvent event) {
     	prevController.changethescene();
     }
+    
+    void setMyScene(Scene ascene) {
+    	myScene = ascene;
+    }
+
+	public void setPrimaryStage(Stage astage) {
+		applicationStage = astage;		
+	}
+
+	public void setNextController(FinalSceneController acontroller) {
+		nextController = acontroller;
+	}
+	
+	void changethescene() {
+		applicationStage.setScene(myScene);
+	}
+	
+	void setMovie(Movie amovie) {
+		thismovie = amovie;
+	}
+	
+	void setCustomer(Customer acustomer) {
+		thiscustomer = acustomer;
+	}
+
 
 }
