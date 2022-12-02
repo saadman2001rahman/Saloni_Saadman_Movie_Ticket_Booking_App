@@ -28,6 +28,7 @@ public class FinalSceneController {
     
     private Stage applicationStage;
     
+    
     void setNameOfCustomer(String name) {
     	final_name_of_customer.setText(name);
     }

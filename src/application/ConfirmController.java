@@ -59,6 +59,7 @@ public class ConfirmController {
         	nextController.setNameOfTheatre(thismovie.getTheatreName());
         	nextController.setDateAndTime();
         	nextController.setNameOfMovie(thismovie.getMovieName());
+        	nextController.setPrice(Double.toString(thismovie.getbasePrice()));
         	
         	System.out.println("This worked");
         	
@@ -75,7 +76,21 @@ public class ConfirmController {
 
     @FXML
     void movie_cancelled(ActionEvent event) {
-    	prevController.changethescene();
+    	try {
+    		FXMLLoader back = new FXMLLoader();
+    		VBox change = back.load(new FileInputStream("src/application/login_page.fxml"));
+    		
+    		prevController = back.getController();
+    		prevController.setPrimaryStage(applicationStage);
+    		prevController.setMyScene(new Scene(change));
+        	prevController.changethescene();
+
+    	} catch (Exception e) {
+    		e.printStackTrace();
+        	System.out.println("This didnt work");
+
+    	}
+
     }
     
     void setMyScene(Scene ascene) {
@@ -101,6 +116,25 @@ public class ConfirmController {
 	void setCustomer(Customer acustomer) {
 		thiscustomer = acustomer;
 	}
+	
+	void m_confirm_genre() {
+		confirm_genre.setText(thismovie.getGenres());
+	}
+	
+	void m_confirm_name() {
+		confirm_name.setText(thismovie.getMovieName());
+	}
+
+	void m_confirm_theatre() {
+		confirm_theatre.setText(thismovie.getTheatreName());
+	}
+
+	void m_confirm_price() {
+		confirm_price.setText(Double.toString(thismovie.getbasePrice()));
+	}
+
+	
+	
 
 
 }

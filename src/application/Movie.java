@@ -70,4 +70,12 @@ public class Movie {
 		return theatre;
 	}
 	
+	public String getGenres() {
+		String result = "";
+		for (String n: movieGenre) {
+			result += n + " ";
+		}
+		return result;
+	}
+	
 }

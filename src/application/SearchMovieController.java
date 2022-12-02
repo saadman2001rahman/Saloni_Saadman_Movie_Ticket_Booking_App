@@ -42,9 +42,10 @@ public class SearchMovieController {
     		ArrayList<Movie> matches = new ArrayList<Movie>();
     		for (String aword: words) {
     			for (String searchword: searchWords) { 
-    				if (aword.equals(searchword)) {
-    					matches.add(new Movie(nameInFile, line.split("%%%")[1].split(" "), Integer.parseInt(line.split("%%%")[2]), Double.parseDouble(line.split("%%%")[3]))
-    				}
+//    				if (aword.equals(searchword)) {
+//    					matches.add(new Movie(nameInFile, line.split("%%%")[1].split(" "), Integer.parseInt(line.split("%%%")[2]), Double.parseDouble(line.split("%%%")[3]))
+//    				}
+    				break;
     			}
     		}
     		

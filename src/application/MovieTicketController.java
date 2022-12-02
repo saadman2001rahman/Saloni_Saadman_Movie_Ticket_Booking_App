@@ -96,29 +96,12 @@ public class MovieTicketController {
     	} 
     	else {
     		if (checkuser(user_name, password)) {
-//		    	try {
-//		    		FXMLLoader file_loader = new FXMLLoader();
-//		        	VBox search_movie_container = file_loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
-//		        	
-//		        	movie_scene = new Scene(search_movie_container);
-//		    		
-//		    		
-//		
-//				} catch(Exception e) {
-//					e.printStackTrace();
-//				}		    	
-//		    	applicationStage.setScene(movie_scene);
 		    	ArrayList<HBox> allMovieNames = getAllMovies();
 		    	int moviesadded = 0;
 		    	int totalMovies = allMovieNames.size();
 		    	
     			VBox moviecontainer = new VBox();
     			while (moviesadded < totalMovies) {
-//    				HBox movieContainer = new HBox();
-//    				Label movieLabel = new Label(allMovieNames.get(moviesadded));
-    				
-//    				movieContainer.getChildren().add(movieLabel);
-    				
     				
     				moviecontainer.getChildren().add(allMovieNames.get(moviesadded));
     				moviesadded++;
@@ -166,7 +149,7 @@ public class MovieTicketController {
     		
     		if (username.equals(name) && password.equals(pass)) {
     			reader.close();
-    			thiscustomer = new Customer(username, password,Integer.parseInt(line.split("%%%")[3]), 0);
+    			thiscustomer = new Customer(username, line.split("%%%")[2], Integer.parseInt(line.split("%%%")[3]), 0);
     			return true;
     		}   
     		line = reader.readLine();
@@ -200,9 +183,12 @@ public class MovieTicketController {
     		movieduration.setPadding(margin);
     		movierating.setPadding(margin);
     		
+    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1]);
+
+    		
     		Button watchButton = new Button("Watch this");
     		
-    		watchButton.setOnAction(watch -> changetoconfirm(send, thiscustomer));
+    		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
     		watchButton.setPadding(margin);
 
     		
@@ -220,20 +206,20 @@ public class MovieTicketController {
     	return movielist;
     }
     
-    private void changetoconfirm(String selectedMovie, Customer acustomer) {
+    private void changetoconfirmscene(Movie amovie, Customer acustomer) {
 		try {
 			
     		FXMLLoader loader = new FXMLLoader();
     		VBox confirm = loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
     		
-    		String moviename = selectedMovie.split("%%%")[0];
-    		String moviegenre = selectedMovie.split("%%%")[5];
-    		String movieprice = selectedMovie.split("%%%")[4];
-    		String movietheatre = selectedMovie.split("%%%")[1];
-    		String movieduration = selectedMovie.split("%%%")[3];
-    		String movierating = selectedMovie.split("%%%")[2];
+//    		String moviename = selectedMovie.split("%%%")[0];
+//    		String moviegenre = selectedMovie.split("%%%")[5];
+//    		String movieprice = selectedMovie.split("%%%")[4];
+//    		String movietheatre = selectedMovie.split("%%%")[1];
+//    		String movieduration = selectedMovie.split("%%%")[3];
+//    		String movierating = selectedMovie.split("%%%")[2];
     		
-    		thismovie = new Movie(moviename, moviegenre.split(" "), Integer.parseInt(movieduration), Double.parseDouble(movieprice), movietheatre);
+    		thismovie = amovie;
 
     		confirmcontroller = loader.getController();
     		confirmcontroller.setPrimaryStage(applicationStage);
@@ -241,6 +227,10 @@ public class MovieTicketController {
 //    		confirmcontroller.setNextController(this);
     		confirmcontroller.setCustomer(acustomer);
     		confirmcontroller.setMovie(thismovie);
+    		confirmcontroller.m_confirm_price();
+    		confirmcontroller.m_confirm_theatre();
+    		confirmcontroller.m_confirm_name();
+    		confirmcontroller.m_confirm_genre();
     		
     		confirmcontroller.changethescene();
     		
@@ -250,10 +240,6 @@ public class MovieTicketController {
 		}
 		
 	}
-
-
-
-
 
 	void setMyScene(Scene ascene) {
     	myScene = ascene;
