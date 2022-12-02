@@ -18,5 +18,9 @@ public class Theater {
 	public void bookSeat(Schedule date, Seat seatNumber) {
 		
 	}
+	
+	public String getTheatreName() {
+		return theaterName;
+	}
 
 }

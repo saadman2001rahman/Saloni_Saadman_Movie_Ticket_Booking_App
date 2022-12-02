@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox prefHeight="297.0" prefWidth="398.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.AdminController">
+<VBox prefHeight="297.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -18,6 +17,18 @@
          <children>
             <Label text="Movie genres" />
             <TextField fx:id="admin_movie_genre" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Movie rating" />
+            <TextField fx:id="admin_movie_rating" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Theatre" />
+            <TextField fx:id="admin_theatre" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
