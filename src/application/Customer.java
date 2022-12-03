@@ -1,6 +1,6 @@
 package application;
 
-public class Customer {
+public class Customer extends Person{
 	private String userID;
 	private String customerName = "";
 	private int age;
@@ -8,7 +8,8 @@ public class Customer {
 	private double amountBalance;
 	
 	public Customer(String id, String name, int age, double amountBalance) {
-		this.userID = id;
+		super(id);
+//		this.userID = id;
 		this.customerName = name;
 		this.age = age;
 		this.amountBalance = amountBalance;

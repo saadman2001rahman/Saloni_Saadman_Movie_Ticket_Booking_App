@@ -44,21 +44,16 @@ public class AdminController {
     void add_the_movie(ActionEvent event) throws IOException {
     
 	    String movieName = admin_movie_name.getText();
-	    String movieGenre = admin_movie_genre.getText();
-	    String movieLen = (String) admin_movie_len.getText();
-	    String moviePrice = (String) admin_movie_base_price.getText();
+	    String[] movieGenre = admin_movie_genre.getText().split(" ");
+	    int movieLen = Integer.parseInt(admin_movie_len.getText());
+	    double moviePrice = Double.parseDouble(admin_movie_base_price.getText());
 	    String movieTheatre = admin_theatre.getText();
 	    String movie_rating = admin_movie_rating.getText();
 	    
-	    String specialChar = "%%%";
-	    
-	    String movie_representaion = movieName + specialChar + movieTheatre + specialChar + movie_rating + specialChar + movieLen + specialChar + moviePrice + specialChar + movieGenre;
+	    Movie thismovie = new Movie(movieName, movieGenre, movieLen, moviePrice, movieTheatre, movie_rating);
+	    Admin admin = new Admin("admin");
+	    admin.addMovie(thismovie);
 	    	
-	    BufferedWriter writer = new BufferedWriter(new FileWriter("src/application/ListOfMovies.txt", true));
-	    writer.write(movie_representaion + "\n");
-	    
-	    writer.close();
-	    
 	    nextController.changethescene();
 	    
     }

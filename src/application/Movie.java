@@ -1,5 +1,8 @@
 package application;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
@@ -11,6 +14,7 @@ public class Movie {
 	private int movieLengthMin;
 	private double basePrice;
 	private String theatre;
+	private String movieRating;
 	
 //	public Movie (String mName, String[] mGenre, int mLen, double basePrice, Show show) {
 //		super(show);
@@ -22,15 +26,24 @@ public class Movie {
 //	}
 	
 	//this is a seperate constrcutor for testing purposes
-	public Movie (String mName, String[] mGenre, int mLen, double basePrice, String atheatre) {
-		this.movieName = mName;
-		this.movieGenre = mGenre;
-		this.movieLengthMin = mLen;
-		this.basePrice= basePrice;
+	public Movie (String mName, String[] mGenre, int mLen, double price, String atheatre, String rate) {
+		movieName = mName;
+		movieGenre = mGenre;
+		movieLengthMin = mLen;
+		basePrice= price;
 		theatre = atheatre;
-		
+		movieRating = rate;
 	}
-
+	
+	public Movie (String mName) {
+		movieName = mName;
+		movieGenre = new String[5];
+		movieLengthMin = 0;
+		basePrice= 0.0;
+		theatre = "";
+		movieRating = "";
+	}
+	
 	
 	public Boolean movieGenreMatch(String[] movieGenre, String[] selectedGenre) {
 		int counter = 0;
@@ -76,6 +89,14 @@ public class Movie {
 			result += n + " ";
 		}
 		return result;
+	}
+	
+	public String getLen() {
+		return Integer.toString(movieLengthMin);
+	}
+	
+	public String getRating() {
+		return movieRating;
 	}
 	
 }
