@@ -14,7 +14,7 @@ public class Customer {
 		this.amountBalance = amountBalance;
 	}
 	
-	public String getCustName() {
+	public String getCustomerName() {
 		return this.customerName;
 	}
 	
@@ -26,10 +26,10 @@ public class Customer {
 		return this.age;
 	}
 	
-	public void bookSeat(Movie movieName, Theater theater, Schedule date, Seat seatnum) {
+	public void bookSeat(Movie movieName, Theater theater, Schedule date, Seat seatNum) {
 		BookingSystem book = new BookingSystem();
 		try {
-			book.bookMovieTicket(this.customerName, theater, date, seatNum);
+			book.bookMovieTicket(name, theater, date, seatNum);
 			book.calculateTotalPrice(movieName.getbasePrice());
 		}catch (Exception e) {
 			
