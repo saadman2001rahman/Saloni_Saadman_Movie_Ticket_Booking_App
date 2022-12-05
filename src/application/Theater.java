@@ -35,10 +35,7 @@ public class Theater {
 	public String getType() {
 		return type;
 	}
-	
-	public String getTheatreName() {
-		return theaterName;
-	}
+
 
 
 }
