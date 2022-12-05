@@ -21,13 +21,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Admin extends User{
-	public Admin(String uID, String uName, int uAge) {
+	public Admin(int uID, String uName, int uAge) {
 		super(uID, uName, uAge);
 	}
 	
 	public void addMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
 		theaterNum.setScheduleArrayList(availDates);
-		movieToAdd.addTheater(theaterNum);
+		movieToAdd.addTheatre(theaterNum);
 	}
 	
 	private static ArrayList<Seat> setAllSeats(){

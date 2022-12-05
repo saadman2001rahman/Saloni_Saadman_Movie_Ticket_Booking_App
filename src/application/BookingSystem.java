@@ -35,7 +35,7 @@ public class BookingSystem {
 	
 	public void bookMovieTicket(Customer customer, Movie movie,Theater theater, Schedule date, Seat seatNumber){
 		if(checkBooking(theater, date, seatNumber)) {
-			double totalPrice = calculateTotalPrice(movie.getbasePrice(), theater, date, date.getSeat(seatNumber));
+			double totalPrice = calculateTotalPrice(movie.getBasePrice(), theater, date, date.getSeat(seatNumber));
 			if(customer.hasEnoughBalance(totalPrice)) {
 				customer.setAmountBalance(totalPrice);
 				theater.bookSeat(date, seatNumber);
