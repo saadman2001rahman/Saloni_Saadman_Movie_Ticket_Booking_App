@@ -3,36 +3,35 @@ package application;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
 public class Movie {
 	
-	private String movieName;
+	private String movieName = "";
 	private final String[] movieGenre;
 	private int movieLengthMin;
+	private ArrayList<Theater> theater;
+	private String[] theaters;
+
 	private double basePrice;
-	private String theatre;
-	private String movieRating;
 	
-//	public Movie (String mName, String[] mGenre, int mLen, double basePrice, Show show) {
-//		super(show);
-//		this.movieName = mName;
-//		this.movieGenre = mGenre;
-//		this.movieLengthMin = mLen;
-//		this.basePrice= basePrice;
-//		
-//	}
+	public Movie (String mName, String[] mGenre, int mLen, double basePrice, String[] mTheatres) {
+		this.movieName = mName;
+		this.movieGenre = mGenre;
+		this.movieLengthMin = mLen;
+		this.basePrice= basePrice;
+		if (mTheatres.length == 0) {
+			this.theater = new ArrayList<>();
+		} else {
+			theaters = mTheatres;
+		}
+	}
 	
-	//this is a seperate constrcutor for testing purposes
-	public Movie (String mName, String[] mGenre, int mLen, double price, String atheatre, String rate) {
-		movieName = mName;
-		movieGenre = mGenre;
-		movieLengthMin = mLen;
-		basePrice= price;
-		theatre = atheatre;
-		movieRating = rate;
+	public String getMovieName() {
+		return this.movieName;
 	}
 	
 	public Movie (String mName) {
@@ -75,13 +74,18 @@ public class Movie {
 		return this.basePrice;
 	}
 	
-	public String getMovieName() {
-		return movieName;
+	public void setTheater(ArrayList<Theater> theater) {
+		this.theater = theater;
 	}
 	
-	public String getTheatreName() {
-		return theatre;
+	public void addTheater(Theater theater) {
+		this.theater.add(theater);
 	}
+	
+	public ArrayList<Theater> getTheaters() {
+		return this.theater;
+	}
+
 	
 	public String getGenres() {
 		String result = "";

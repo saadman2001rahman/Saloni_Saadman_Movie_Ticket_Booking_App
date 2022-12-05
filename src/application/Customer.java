@@ -1,39 +1,26 @@
 package application;
 
-public class Customer extends Person{
-	private String userID;
-	private String customerName = "";
-	private int age;
-	
+public class Customer extends User{
 	private double amountBalance;
 	
 	public Customer(String id, String name, int age, double amountBalance) {
-		super(id);
-//		this.userID = id;
-		this.customerName = name;
-		this.age = age;
+		super(id, name, age);
 		this.amountBalance = amountBalance;
 	}
 	
-	public String getCustName() {
-		return this.customerName;
+	public double getAmountBalance() {
+		return this.amountBalance;
 	}
 	
-	public void changeAmountBalance(double balance) {
-		this.amountBalance += balance;
+	public Boolean hasEnoughBalance (double totalPrice) {
+		if (this.amountBalance >= totalPrice) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void setAmountBalance (double totalPrice) {
+		this.amountBalance -= totalPrice;
 	}
 
-	public int getAge() {
-		return this.age;
-	}
-	
-//	public void bookSeat(Movie movieName, Theater theater, Schedule date, Seat seatnum) {
-//		BookingSystem book = new BookingSystem();
-//		try {
-//			book.bookMovieTicket(customerName, theater, date, seatnum);
-//			book.calculateTotalPrice(movieName.getbasePrice());
-//		}catch (Exception e) {
-//			
-//		}
-//	}
 }

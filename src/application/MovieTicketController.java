@@ -329,7 +329,7 @@ public class MovieTicketController {
     		movieduration.setPadding(margin);
     		movierating.setPadding(margin);
     		
-    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1], line.split("%%%")[2]);
+    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1].split(" ")), line.split("%%%")[2]);
 
     		
     		Button watchButton = new Button("Watch this");
