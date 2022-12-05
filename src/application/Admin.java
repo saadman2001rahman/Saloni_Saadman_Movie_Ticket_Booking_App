@@ -6,11 +6,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Admin extends User{
-	public Admin(int uID, String uName, int uAge) {
+	public Admin(String uID, String uName, int uAge) {
 		super(uID, uName, uAge);
 	}
 	
-	public void addMovie(Movie movieToADD, Theater theaterNum, ArrayList<Schedule>availDates) {
+	public void addMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
 		theaterNum.setScheduleArrayList(availDates);
 		movieToAdd.addTheater(theaterNum);
 	}
@@ -21,7 +21,7 @@ public class Admin extends User{
 		int[] columnArr = {1,2,3,4,5,6,7,8,9,10,11};
 		for (char row : rowArr) {
 			for( int column : columnArr) {
-				if(row == 'E' && column >= 4 && <=8) {
+				if(row == 'E' && column >= 4 && column <=8) {
 					availSeats.add(new Seat(row, column, "wheelchair"));
 				}
 				else if(row =='D' || row == 'C') {

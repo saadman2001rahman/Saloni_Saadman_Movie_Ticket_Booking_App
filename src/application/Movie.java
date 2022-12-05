@@ -11,15 +11,21 @@ public class Movie {
 	private final String[] movieGenre;
 	private int movieLengthMin;
 	private ArrayList<Theater> theater;
+	private String[] theaters;
+
 	private double basePrice;
-	private String theatre;
+//	private String theatre;
 	
-	public Movie (String mName, String[] mGenre, int mLen, double basePrice) {
+	public Movie (String mName, String[] mGenre, int mLen, double basePrice, String[] mTheatres) {
 		this.movieName = mName;
 		this.movieGenre = mGenre;
 		this.movieLengthMin = mLen;
 		this.basePrice= basePrice;
-		this.theater = new ArrayList<>();
+		if (mTheatres.length == 0) {
+			this.theater = new ArrayList<>();
+		} else {
+			theaters = mTheatres;
+		}
 	}
 	
 	public String getMovieName() {

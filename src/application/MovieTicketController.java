@@ -183,7 +183,7 @@ public class MovieTicketController {
     		movieduration.setPadding(margin);
     		movierating.setPadding(margin);
     		
-    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1]);
+    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1].split(" "));
 
     		
     		Button watchButton = new Button("Watch this");
@@ -212,19 +212,11 @@ public class MovieTicketController {
     		FXMLLoader loader = new FXMLLoader();
     		VBox confirm = loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
     		
-//    		String moviename = selectedMovie.split("%%%")[0];
-//    		String moviegenre = selectedMovie.split("%%%")[5];
-//    		String movieprice = selectedMovie.split("%%%")[4];
-//    		String movietheatre = selectedMovie.split("%%%")[1];
-//    		String movieduration = selectedMovie.split("%%%")[3];
-//    		String movierating = selectedMovie.split("%%%")[2];
-    		
     		thismovie = amovie;
 
     		confirmcontroller = loader.getController();
     		confirmcontroller.setPrimaryStage(applicationStage);
     		confirmcontroller.setMyScene(new Scene(confirm));
-//    		confirmcontroller.setNextController(this);
     		confirmcontroller.setCustomer(acustomer);
     		confirmcontroller.setMovie(thismovie);
     		confirmcontroller.m_confirm_price();
