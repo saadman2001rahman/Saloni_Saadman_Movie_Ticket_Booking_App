@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Objects;
 
 public class Movie {
@@ -11,6 +12,7 @@ public class Movie {
 	private int movieLengthMin;
 	private ArrayList<Theater> theater;
 	private double basePrice;
+	private String theatre;
 	
 	public Movie (String mName, String[] mGenre, int mLen, double basePrice) {
 		this.movieName = mName;
@@ -23,6 +25,7 @@ public class Movie {
 	public String getMovieName() {
 		return this.movieName;
 	}
+
 	
 	public Boolean movieGenreMatch(String[] movieGenre, String[] selectedGenre) {
 		int counter = 0;
@@ -66,4 +69,13 @@ public class Movie {
 		return this.theater;
 	}
 
+	
+	public String getGenres() {
+		String result = "";
+		for (String n: movieGenre) {
+			result += n + " ";
+		}
+		return result;
+	}
+	
 }

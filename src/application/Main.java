@@ -16,9 +16,13 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			VBox root = loader.load(new FileInputStream("src/application/login_page.fxml"));
 			MovieTicketController controller = (MovieTicketController) loader.getController();
-			controller.applicationStage = primaryStage;
+			controller.setPrimaryStage(primaryStage);
+			
 
 			Scene scene = new Scene(root,400,400);
+			
+			controller.setMyScene(scene);
+
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("a title");
 			primaryStage.show();

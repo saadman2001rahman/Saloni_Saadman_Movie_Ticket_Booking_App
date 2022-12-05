@@ -5,42 +5,44 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox prefHeight="198.0" prefWidth="593.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.FinalSceneController">
+<VBox prefHeight="297.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie Ticket" />
+            <Label text="Movie name" />
+            <TextField fx:id="admin_movie_name" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Theatre: " />
-            <Label fx:id="final_theatre_name" text="this will be the theatre number" />
+            <Label text="Movie genres" />
+            <TextField fx:id="admin_movie_genre" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Date: " />
-            <Label fx:id="final_date_and_time" text="this will be the Date and Time" />
+            <Label text="Movie rating" />
+            <TextField fx:id="admin_movie_rating" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Price:" />
-            <Label fx:id="final_price" text="this will be the price" />
+            <Label text="Theatre" />
+            <TextField fx:id="admin_theatre" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="final_name_of_movie" text="This will be the movie name" />
+            <Label text="Movie length in minutes" />
+            <TextField fx:id="admin_movie_len" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="For: " />
-            <Label fx:id="final_name_of_customer" text="this will be the Customer name" />
+            <Label text="Base price" />
+            <TextField fx:id="admin_movie_base_price" />
          </children>
       </HBox>
+      <Button fx:id="add_movie_button" mnemonicParsing="false" onAction="#add_the_movie" text="Add movie" />
    </children>
 </VBox>

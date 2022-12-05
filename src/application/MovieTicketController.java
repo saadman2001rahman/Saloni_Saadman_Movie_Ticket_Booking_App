@@ -1,12 +1,21 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -14,11 +23,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MovieTicketController {
-	Stage applicationStage;
+	private Stage applicationStage;
+	
+	private Scene myScene;
+	
+	private AdminController theadmincontrols;
+	
+	private New_Customer_Controller newcustomercontrols;
+	
+	private ConfirmController confirmcontroller;
 
     @FXML
     private TextField login_page_username_field;
@@ -35,66 +53,205 @@ public class MovieTicketController {
     @FXML
     private Button rent_movies_button;
     
-    @FXML 
-    ImageView imageView;
+    @FXML Button new_acc_button;
     
+    private Customer thiscustomer;
+    
+    private Movie thismovie;
+    
+        
     @FXML
-    void check_login(ActionEvent event) {
+    void check_login(ActionEvent event) throws IOException {
     	/**
     	 * Activates after login button is pressed in the first login scene. This will check whether username and password match with ones from record, and if they match, it will change the scene to one where there will be a list of movies to choose from.
     	 */
     	
-    	Scene home_scene = applicationStage .getScene();
     	String user_name = login_page_username_field.getText();
     	String password = login_page_password_field.getText();
-    	boolean successful_login = true;
-    	Label temp_label = new Label("This is just temporary. Teting whether the scene changes to a new scene from login page.");
-    	Scene rent_movie_scene = new Scene(temp_label);
-
-    	try {
-    		FXMLLoader file_loader = new FXMLLoader();
-        	VBox rent_movie_container = file_loader.load(new FileInputStream("src/application/rent_movie_scene.fxml"));
-        	
-        	MovieTicketController acontroller = file_loader.getController();
-			acontroller.applicationStage = applicationStage;
-
-        	
-        	rent_movie_scene = new Scene(rent_movie_container);
-
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
     	
-    	if (successful_login) {
-    		applicationStage.setScene(rent_movie_scene);
+    	boolean successful_login = true;
+    	boolean admin_login = false;
+    	
+    	//in case there is an error in the changing of scenes
+    	Label temp_label = new Label("This is just temporary. Teting whether the scene changes to a new scene from login page.");
+    	Scene movie_scene = new Scene(temp_label);
+    	
+    	if (user_name.equals("admin") && password.equals("admin")) {
+    		try {
+        		FXMLLoader adminLoader = new FXMLLoader();
+        		VBox adminscene = adminLoader.load(new FileInputStream("src/application/admin_page.fxml"));
+        		
+        		theadmincontrols = adminLoader.getController();
+        		theadmincontrols.setPrimaryStage(applicationStage);
+        		theadmincontrols.setMyScene(new Scene(adminscene));
+        		theadmincontrols.setNextController(this);
+        		
+        		
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    		
+    		theadmincontrols.changethescene();
+
+    	} 
+    	else {
+    		if (checkuser(user_name, password)) {
+		    	ArrayList<HBox> allMovieNames = getAllMovies();
+		    	int moviesadded = 0;
+		    	int totalMovies = allMovieNames.size();
+		    	
+    			VBox moviecontainer = new VBox();
+    			while (moviesadded < totalMovies) {
+    				
+    				moviecontainer.getChildren().add(allMovieNames.get(moviesadded));
+    				moviesadded++;
+
+    			}
+    			
+    			Scene allmoviescene = new Scene(moviecontainer, 800, 800);
+    			applicationStage.setScene(allmoviescene);
+    			
+    		} else {
+    			System.out.println("Creds not right");
+    		}
     	}
     }
+
+    	
+    		
+    	
     
     @FXML
-    void movie_selected(ActionEvent user_selected_movie) {
-    	/**
-    	 * Activates after user chooses a movie to view, in which case it displays all information on the movie. Info includes movie title, genres, producer/author/director/actors, length, price of the movie, seating arrangement (***maybe another scene for seating arrangement??***)
-    	 */
-    	Label a_label = new Label("This is just temporary. Teting whether the scene changes to a new scene from login page.");
-    	Scene movie_info_scene = new Scene(a_label);
-
-    	try {
-    		FXMLLoader file_loader = new FXMLLoader();
-        	VBox movie_info_container = file_loader.load(new FileInputStream("src/application/movie_info_scene.fxml"));
-        	
-        	
-        	movie_info_scene = new Scene(movie_info_container);
-
-		} catch(Exception e) {
+    void make_customer_account(ActionEvent thisisanewcustomer) {
+		try {
+    		FXMLLoader newcustomerloader = new FXMLLoader();
+    		VBox newcustomerscene = newcustomerloader.load(new FileInputStream("src/application/new_customer_scene.fxml"));
+    		
+    		newcustomercontrols = newcustomerloader.getController();
+    		newcustomercontrols.setPrimaryStage(applicationStage);
+    		newcustomercontrols.setMyScene(new Scene(newcustomerscene));
+    		newcustomercontrols.setNextController(this);
+    		
+    		
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    	
-    	applicationStage.setScene(movie_info_scene);
+		
+		newcustomercontrols.changethescene();
     }
     
-//    void go_to_home_page(ActionEvent going_to_home_page) {
-//    	applicationStage.setScene()
-//    }
+    boolean checkuser(String name, String pass) throws IOException {
+    	BufferedReader reader = new BufferedReader(new FileReader("src/application/List_of_customers.txt"));
+    	String line = reader.readLine();
+    	while (line != null) {
+    		String username = line.split("%%%")[0];
+    		String password = line.split("%%%")[1];
+    		
+    		if (username.equals(name) && password.equals(pass)) {
+    			reader.close();
+    			thiscustomer = new Customer(username, line.split("%%%")[2], Integer.parseInt(line.split("%%%")[3]), 0);
+    			return true;
+    		}   
+    		line = reader.readLine();
+    	}
+    	reader.close();
+    	return false;
+    }
+    
+    ArrayList<HBox> getAllMovies() throws IOException {
+    	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
+    	String line = reader.readLine();
+    	String send = String.valueOf(line);
+    	ArrayList<HBox> movielist = new ArrayList<HBox>();
+    	
+    	Insets margin = new Insets(10, 10, 10, 10);
+    	
+    	while (line != null) {
+    		
+    		HBox moviecontainer = new HBox();
+    		Label moviename = new Label(line.split("%%%")[0]);
+    		Label moviegenre = new Label(line.split("%%%")[5]);
+    		Label movieprice = new Label(line.split("%%%")[4]);
+    		Label movietheatre = new Label(line.split("%%%")[1]);
+    		Label movieduration = new Label(line.split("%%%")[3]);
+    		Label movierating = new Label(line.split("%%%")[2]);
+    		
+    		moviename.setPadding(margin);
+    		moviegenre.setPadding(margin);
+    		movieprice.setPadding(margin);
+    		movietheatre.setPadding(margin);
+    		movieduration.setPadding(margin);
+    		movierating.setPadding(margin);
+    		
+    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1]);
+
+    		
+    		Button watchButton = new Button("Watch this");
+    		
+    		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
+    		watchButton.setPadding(margin);
+
+    		
+
+    		
+    		moviecontainer.getChildren().addAll(moviename, movietheatre, movierating, movieduration, movieprice, moviegenre, watchButton);
+
+    		
+//    		String movieName = line.split("%%%")[0];
+    		movielist.add(moviecontainer);
+    		
+    		line = reader.readLine();
+    	}
+    	reader.close();
+    	return movielist;
+    }
+    
+    private void changetoconfirmscene(Movie amovie, Customer acustomer) {
+		try {
+			
+    		FXMLLoader loader = new FXMLLoader();
+    		VBox confirm = loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
+    		
+//    		String moviename = selectedMovie.split("%%%")[0];
+//    		String moviegenre = selectedMovie.split("%%%")[5];
+//    		String movieprice = selectedMovie.split("%%%")[4];
+//    		String movietheatre = selectedMovie.split("%%%")[1];
+//    		String movieduration = selectedMovie.split("%%%")[3];
+//    		String movierating = selectedMovie.split("%%%")[2];
+    		
+    		thismovie = amovie;
+
+    		confirmcontroller = loader.getController();
+    		confirmcontroller.setPrimaryStage(applicationStage);
+    		confirmcontroller.setMyScene(new Scene(confirm));
+//    		confirmcontroller.setNextController(this);
+    		confirmcontroller.setCustomer(acustomer);
+    		confirmcontroller.setMovie(thismovie);
+    		confirmcontroller.m_confirm_price();
+    		confirmcontroller.m_confirm_theatre();
+    		confirmcontroller.m_confirm_name();
+    		confirmcontroller.m_confirm_genre();
+    		
+    		confirmcontroller.changethescene();
+    		
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	void setMyScene(Scene ascene) {
+    	myScene = ascene;
+    }
+    
+    void setPrimaryStage(Stage astage) {
+    	applicationStage = astage;
+    }
+    
+	void changethescene() {
+		applicationStage.setScene(myScene);
+	}
 }
 
 
