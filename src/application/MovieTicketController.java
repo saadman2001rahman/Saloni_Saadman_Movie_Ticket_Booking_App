@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -101,6 +102,39 @@ public class MovieTicketController {
 		    	int totalMovies = allMovieNames.size();
 		    	
     			VBox moviecontainer = new VBox();
+    			
+    			HBox searchByName = new HBox();
+    			Label namelabel = new Label("Search by name of Movie: ");
+    			TextField searchMovieName = new TextField();
+    			Button nameButton = new Button("Search");
+    			nameButton.setOnAction(search -> {
+					try {
+						displayNameSearch(searchMovieName.getText());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				});
+    			searchByName.getChildren().addAll(namelabel, searchMovieName, nameButton);
+    			
+    			HBox searchByGenre = new HBox();
+    			Label genrelabel = new Label("Search by genre of Movie: ");
+    			TextField searchMovieGenre = new TextField();
+    			Button genreButton = new Button("Search");
+    			genreButton.setOnAction(searchagenre -> {
+					try {
+						displayGenreSearch(searchMovieGenre.getText());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				});
+    			
+    			searchByGenre.getChildren().addAll(genrelabel, searchMovieGenre, genreButton);
+
+
+    			moviecontainer.getChildren().add(searchByName);
+    			moviecontainer.getChildren().add(searchByGenre);
+//    			moviecontainer.getChildren().add(searchByTheatre);
+
     			while (moviesadded < totalMovies) {
     				
     				moviecontainer.getChildren().add(allMovieNames.get(moviesadded));
@@ -121,7 +155,119 @@ public class MovieTicketController {
     		
     	
     
-    @FXML
+	public void displayGenreSearch(String text) throws IOException {
+//    	Movie wanted = new Movie(text);
+    	VBox searchContainer = new VBox();
+    	
+    	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
+    	String line = reader.readLine();
+
+    	Insets margin = new Insets(10, 10, 10, 10);
+
+    	while (line != null) {
+    		String movieGenre = line.split("%%%")[5];
+    		String[] words = movieGenre.split(" ");
+    		for (String word: words) {
+	    		if (word.equals(text)) {
+	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1], line.split("%%%")[2]);
+	        		
+	        		HBox moviecontainer = new HBox();
+	        		Label moviename = new Label(line.split("%%%")[0]);
+	        		Label moviegenre = new Label(line.split("%%%")[5]);
+	        		Label movieprice = new Label(line.split("%%%")[4]);
+	        		Label movietheatre = new Label(line.split("%%%")[1]);
+	        		Label movieduration = new Label(line.split("%%%")[3]);
+	        		Label movierating = new Label(line.split("%%%")[2]);
+	        		
+	        		moviename.setPadding(margin);
+	        		moviegenre.setPadding(margin);
+	        		movieprice.setPadding(margin);
+	        		movietheatre.setPadding(margin);
+	        		movieduration.setPadding(margin);
+	        		movierating.setPadding(margin);
+	
+	        		Button watchButton = new Button("Watch this");
+	        		
+	        		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
+	        		watchButton.setPadding(margin);
+	
+	        		moviecontainer.getChildren().addAll(moviename, movietheatre, movierating, movieduration, movieprice, moviegenre, watchButton);
+	        		
+	        		searchContainer.getChildren().addAll(moviecontainer);
+	        		
+	    		}
+    		}
+    		line = reader.readLine();
+
+    	}
+    	
+    	reader.close();
+		Scene allmoviescene = new Scene(searchContainer, 800, 800);
+		applicationStage.setScene(allmoviescene);
+
+	}
+
+
+
+
+
+	public void displayNameSearch(String text) throws IOException {
+    	Movie wanted = new Movie(text);
+    	VBox searchContainer = new VBox();
+    	
+    	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
+    	String line = reader.readLine();
+
+    	Insets margin = new Insets(10, 10, 10, 10);
+
+    	while (line != null) {
+    		String movieName = line.split("%%%")[0];
+    		String[] words = movieName.split(" ");
+    		for (String word: words) {
+	    		if (word.equals(text)) {
+	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1], line.split("%%%")[2]);
+	        		
+	        		HBox moviecontainer = new HBox();
+	        		Label moviename = new Label(line.split("%%%")[0]);
+	        		Label moviegenre = new Label(line.split("%%%")[5]);
+	        		Label movieprice = new Label(line.split("%%%")[4]);
+	        		Label movietheatre = new Label(line.split("%%%")[1]);
+	        		Label movieduration = new Label(line.split("%%%")[3]);
+	        		Label movierating = new Label(line.split("%%%")[2]);
+	        		
+	        		moviename.setPadding(margin);
+	        		moviegenre.setPadding(margin);
+	        		movieprice.setPadding(margin);
+	        		movietheatre.setPadding(margin);
+	        		movieduration.setPadding(margin);
+	        		movierating.setPadding(margin);
+	
+	        		Button watchButton = new Button("Watch this");
+	        		
+	        		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
+	        		watchButton.setPadding(margin);
+	
+	        		moviecontainer.getChildren().addAll(moviename, movietheatre, movierating, movieduration, movieprice, moviegenre, watchButton);
+	        		
+	        		searchContainer.getChildren().addAll(moviecontainer);
+	        		
+	    		}
+    		}
+    		line = reader.readLine();
+
+    	}
+    	
+    	reader.close();
+		Scene allmoviescene = new Scene(searchContainer, 800, 800);
+		applicationStage.setScene(allmoviescene);
+
+	}
+
+
+
+
+
+	@FXML
     void make_customer_account(ActionEvent thisisanewcustomer) {
 		try {
     		FXMLLoader newcustomerloader = new FXMLLoader();
@@ -161,7 +307,7 @@ public class MovieTicketController {
     ArrayList<HBox> getAllMovies() throws IOException {
     	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
     	String line = reader.readLine();
-    	String send = String.valueOf(line);
+//    	String send = String.valueOf(line);
     	ArrayList<HBox> movielist = new ArrayList<HBox>();
     	
     	Insets margin = new Insets(10, 10, 10, 10);
@@ -183,7 +329,7 @@ public class MovieTicketController {
     		movieduration.setPadding(margin);
     		movierating.setPadding(margin);
     		
-    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1]);
+    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1].split(" ")), line.split("%%%")[2]);
 
     		
     		Button watchButton = new Button("Watch this");
@@ -212,19 +358,11 @@ public class MovieTicketController {
     		FXMLLoader loader = new FXMLLoader();
     		VBox confirm = loader.load(new FileInputStream("src/application/movie_confirmation_scene.fxml"));
     		
-//    		String moviename = selectedMovie.split("%%%")[0];
-//    		String moviegenre = selectedMovie.split("%%%")[5];
-//    		String movieprice = selectedMovie.split("%%%")[4];
-//    		String movietheatre = selectedMovie.split("%%%")[1];
-//    		String movieduration = selectedMovie.split("%%%")[3];
-//    		String movierating = selectedMovie.split("%%%")[2];
-    		
     		thismovie = amovie;
 
     		confirmcontroller = loader.getController();
     		confirmcontroller.setPrimaryStage(applicationStage);
     		confirmcontroller.setMyScene(new Scene(confirm));
-//    		confirmcontroller.setNextController(this);
     		confirmcontroller.setCustomer(acustomer);
     		confirmcontroller.setMovie(thismovie);
     		confirmcontroller.m_confirm_price();

@@ -55,8 +55,8 @@ public class ConfirmController {
     		nextController.setMyScene(new Scene(finalScene));
     		
     		
-        	nextController.setNameOfCustomer(thiscustomer.getCustName());
-        	nextController.setNameOfTheatre(thismovie.getTheatreName());
+        	nextController.setNameOfCustomer(thiscustomer.getName());
+        	nextController.setNameOfTheatre(thismovie.getMovieName());
         	nextController.setDateAndTime();
         	nextController.setNameOfMovie(thismovie.getMovieName());
         	nextController.setPrice(Double.toString(thismovie.getbasePrice()));
@@ -126,7 +126,7 @@ public class ConfirmController {
 	}
 
 	void m_confirm_theatre() {
-		confirm_theatre.setText(thismovie.getTheatreName());
+		confirm_theatre.setText(thismovie.getMovieName());
 	}
 
 	void m_confirm_price() {

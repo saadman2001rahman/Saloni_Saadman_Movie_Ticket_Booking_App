@@ -1,5 +1,8 @@
 package application;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -11,21 +14,35 @@ public class Movie {
 	private final String[] movieGenre;
 	private int movieLengthMin;
 	private ArrayList<Theater> theater;
+	private String[] theaters;
+
 	private double basePrice;
-	private String theatre;
 	
-	public Movie (String mName, String[] mGenre, int mLen, double basePrice) {
+	public Movie (String mName, String[] mGenre, int mLen, double basePrice, String[] mTheatres) {
 		this.movieName = mName;
 		this.movieGenre = mGenre;
 		this.movieLengthMin = mLen;
 		this.basePrice= basePrice;
-		this.theater = new ArrayList<>();
+		if (mTheatres.length == 0) {
+			this.theater = new ArrayList<>();
+		} else {
+			theaters = mTheatres;
+		}
 	}
 	
 	public String getMovieName() {
 		return this.movieName;
 	}
-
+	
+	public Movie (String mName) {
+		movieName = mName;
+		movieGenre = new String[5];
+		movieLengthMin = 0;
+		basePrice= 0.0;
+		theatre = "";
+		movieRating = "";
+	}
+	
 	
 	public Boolean movieGenreMatch(String[] movieGenre, String[] selectedGenre) {
 		int counter = 0;
@@ -76,6 +93,14 @@ public class Movie {
 			result += n + " ";
 		}
 		return result;
+	}
+	
+	public String getLen() {
+		return Integer.toString(movieLengthMin);
+	}
+	
+	public String getRating() {
+		return movieRating;
 	}
 	
 }
