@@ -58,6 +58,10 @@ public class Movie {
 		this.theater = theater;
 	}
 	
+	public void addTheater(Theater theater) {
+		this.theater.add(theater);
+	}
+	
 	public ArrayList<Theater> getTheaters() {
 		return this.theater;
 	}

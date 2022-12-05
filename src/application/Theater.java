@@ -10,7 +10,6 @@ public class Theater {
 	public Theater(int theaterNum, String type) {
 		this.theaterNum = theaterNum;
 		this.type = type;
-		
 	}
 	
 	public int getTheaterNum() {
@@ -24,12 +23,18 @@ public class Theater {
 	public ArrayList<Schedule> getScheduleArrayList(){
 		return this.scheduleArrayList;
 	}
-	public Boolean seatBooked(Schedule date, Seat seat) {
-		return seat.bookingStatus(date);
-	}
 	
-	public void bookSeat(Schedule date, Seat seatNumber) {
-		
+    public Boolean checkBooking(Schedule date, Seat seatNumber){
+        return date.checkBooking(seatNumber);
+    }
+
+    public void bookSeat(Schedule date, Seat seatNumber){
+        date.bookSeat(seatNumber);
+    }
+    
+	public String getType() {
+		return type;
 	}
+
 
 }
