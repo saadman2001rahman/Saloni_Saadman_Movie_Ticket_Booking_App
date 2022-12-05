@@ -25,11 +25,25 @@ public class Schedule {
 		}
 		return false; //seat is booked
 	}
-	public Schedule(int year, int month, int day, LocalTime hourMin) {
-		new Schedule(new Date (year, month, day), hourMin);
+	public void bookSeat(Seat selectedSeat) {
+		for(Seat seat : this.availableSeats) {
+			if(seat.checkEqual(selectedSeat)) {
+				return seat;
+			}
+		}
+		return null;
+	}
+	
+	public String getString() {
+		return this.scheduledDate.toString();
+	}
+	
+	public LocalTime getTime() {
+		return this.hourMin;
+	}
+	
+	public ArrayList<Seat> getAvailableSeats(){
+		return this.availableSeats;
 	}
 
-	private void setAllSeats() {
-		
-	}
 }
