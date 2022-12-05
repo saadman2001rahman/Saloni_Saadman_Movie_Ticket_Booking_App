@@ -33,13 +33,22 @@ public class BookingSystem {
     }
 
 	
-	public void bookMovieTicket(Customer custName, Theater theater, Schedule date, Seat seatNumber) throws Exception{
-		if(!theater.seatBooked(date,  seatNumber)) {
-			theater.bookSeat(date, seatNumber);
+	public void bookMovieTicket(Customer customer, Movie movie,Theater theater, Schedule date, Seat seatNumber){
+		if(checkBooking(theater, date, seatNumber)) {
+			double totalPrice = calculateTotalPrice(movie.getbasePrice(), theater, date, date.getSeat(seatNumber));
+			if(customer.hasEnoughBalance(totalPrice)) {
+				customer.setAmountBalance(totalPrice);
+				theater.bookSeat(date, seatNumber);
+				System.out.println(customer.getName() +" has booked " + seatNumber.getSeat() + " for the movie " + movie.getMovieName() + "playing in theater number " +theater.getTheaterNum() +" at "+ date.getString());
+				System.out.println(customer.getName() + " has paid $" + totalPrice);
+			}
 		}
-		
 		else {
-			throw new Exception("Seat is booked");
+			System.out.println(seatNumber.getSeat() + " for the movie " + movie.getMovieName() + " playing in theatre number " + theater.getTheaterNum() + " at " + date.getString()+ " is already booked!");
 		}
 	}
+	public Boolean checkBooking(Theater theater, Schedule date, Seat seatNum) {
+		return theater.checkBooking(date, seatNum);
+	}
+
 }
