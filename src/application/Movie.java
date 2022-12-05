@@ -15,16 +15,17 @@ public class Movie {
 	private int movieLengthMin;
 	private ArrayList<Theater> theater;
 	private String[] theaters;
-
+	private String movieRating;
 	private double basePrice;
 	
-	public Movie (String mName, String[] mGenre, int mLen, double basePrice, String[] mTheatres) {
+	public Movie (String mName, String[] mGenre, int mLen, double basePrice, String[] mTheatres, String mrate) {
 		this.movieName = mName;
 		this.movieGenre = mGenre;
 		this.movieLengthMin = mLen;
 		this.basePrice= basePrice;
+		this.movieRating = mrate;
 		if (mTheatres.length == 0) {
-			this.theater = new ArrayList<>();
+			this.theaters = new String[10];
 		} else {
 			theaters = mTheatres;
 		}
@@ -33,16 +34,7 @@ public class Movie {
 	public String getMovieName() {
 		return this.movieName;
 	}
-	
-	public Movie (String mName) {
-		movieName = mName;
-		movieGenre = new String[5];
-		movieLengthMin = 0;
-		basePrice= 0.0;
-		theatre = "";
-		movieRating = "";
-	}
-	
+		
 	
 	public Boolean movieGenreMatch(String[] movieGenre, String[] selectedGenre) {
 		int counter = 0;
@@ -84,6 +76,15 @@ public class Movie {
 	
 	public ArrayList<Theater> getTheaters() {
 		return this.theater;
+	}
+	
+	public String gettheatre() {
+		String res = "";
+		for (String aTheater: theaters) {
+			res += aTheater + " ";
+		}
+		
+		return res;
 	}
 
 	

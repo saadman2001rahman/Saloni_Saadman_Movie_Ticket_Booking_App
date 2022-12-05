@@ -47,12 +47,12 @@ public class AdminController {
 	    String[] movieGenre = admin_movie_genre.getText().split(" ");
 	    int movieLen = Integer.parseInt(admin_movie_len.getText());
 	    double moviePrice = Double.parseDouble(admin_movie_base_price.getText());
-	    String movieTheatre = admin_theatre.getText();
+	    String[] movieTheatre = admin_theatre.getText().split(" ");
 	    String movie_rating = admin_movie_rating.getText();
 	    
 	    Movie thismovie = new Movie(movieName, movieGenre, movieLen, moviePrice, movieTheatre, movie_rating);
-	    Admin admin = new Admin("admin");
-	    admin.addMovie(thismovie);
+	    Admin admin = new Admin("admin", "admin", 0);
+	    admin.addMovieToFile(thismovie);
 	    	
 	    nextController.changethescene();
 	    

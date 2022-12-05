@@ -1,0 +1,1 @@
+Another Movie%%%dolby %%%G%%%120%%%15.0%%%action adventure Another Movie%%%dolby %%%R%%%120%%%15.0%%%comedy action Movie 4%%%IMAX %%%G%%%120%%%14.0%%%action comedy my movie%%%yes %%%4%%%50%%%5.0%%%action Movie 5%%%IMAX %%%r%%%120%%%15.0%%%action Movie 5%%%IMAX %%%r%%%120%%%5.0%%%action 

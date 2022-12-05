@@ -169,7 +169,7 @@ public class MovieTicketController {
     		String[] words = movieGenre.split(" ");
     		for (String word: words) {
 	    		if (word.equals(text)) {
-	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1], line.split("%%%")[2]);
+	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1].split(" "), line.split("%%%")[2]);
 	        		
 	        		HBox moviecontainer = new HBox();
 	        		Label moviename = new Label(line.split("%%%")[0]);
@@ -212,7 +212,6 @@ public class MovieTicketController {
 
 
 	public void displayNameSearch(String text) throws IOException {
-    	Movie wanted = new Movie(text);
     	VBox searchContainer = new VBox();
     	
     	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
@@ -225,7 +224,7 @@ public class MovieTicketController {
     		String[] words = movieName.split(" ");
     		for (String word: words) {
 	    		if (word.equals(text)) {
-	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1], line.split("%%%")[2]);
+	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1].split(" "), line.split("%%%")[2]);
 	        		
 	        		HBox moviecontainer = new HBox();
 	        		Label moviename = new Label(line.split("%%%")[0]);
@@ -329,7 +328,7 @@ public class MovieTicketController {
     		movieduration.setPadding(margin);
     		movierating.setPadding(margin);
     		
-    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1].split(" ")), line.split("%%%")[2]);
+    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1].split(" "), line.split("%%%")[2]);
 
     		
     		Button watchButton = new Button("Watch this");

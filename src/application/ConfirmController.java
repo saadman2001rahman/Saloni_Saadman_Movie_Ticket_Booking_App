@@ -60,9 +60,7 @@ public class ConfirmController {
         	nextController.setDateAndTime();
         	nextController.setNameOfMovie(thismovie.getMovieName());
         	nextController.setPrice(Double.toString(thismovie.getbasePrice()));
-        	
-        	System.out.println("This worked");
-        	
+        	        	
         	nextController.changethescene();
 
 

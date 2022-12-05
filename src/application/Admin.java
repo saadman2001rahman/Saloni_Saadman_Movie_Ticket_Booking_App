@@ -1,17 +1,14 @@
 package application;
 
 	
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 //	public String getUsername() {
 //		return username;
 //	}
 	
-// 	public void addMovie(Movie amovie) throws IOException {
-// 		String specialChar = "%%%";
-// 	    String movie_representaion = amovie.getMovieName() + specialChar + amovie.getTheatreName() + specialChar + amovie.getRating() + specialChar + amovie.getLen() + specialChar + amovie.getbasePrice() + specialChar + amovie.getGenres();
-// 		BufferedWriter writer = new BufferedWriter(new FileWriter("ListOfMovies.txt", true));
-// 		writer.write(movie_representaion);
-// 		writer.close();
-// 	}
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,6 +23,17 @@ public class Admin extends User{
 		theaterNum.setScheduleArrayList(availDates);
 		movieToAdd.addTheater(theaterNum);
 	}
+	
+ 	public void addMovieToFile(Movie amovie) throws IOException {
+ 		System.out.println("movie added");
+		String specialChar = "%%%";
+	    String movie_representaion = amovie.getMovieName() + specialChar + amovie.gettheatre() + specialChar + amovie.getRating() + specialChar + amovie.getLen() + specialChar + amovie.getbasePrice() + specialChar + amovie.getGenres();
+		BufferedWriter writer = new BufferedWriter(new FileWriter("ListOfMovies.txt", true));
+		writer.write(movie_representaion);
+		writer.close();
+ 		System.out.println("movie added test");
+	}
+
 	
 	private static ArrayList<Seat> setAllSeats(){
 		ArrayList<Seat>availSeats = new ArrayList<>();
