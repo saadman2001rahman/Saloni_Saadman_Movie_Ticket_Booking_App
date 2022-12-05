@@ -120,17 +120,17 @@ public class MovieTicketController {
     			Label genrelabel = new Label("Search by genre of Movie: ");
     			TextField searchMovieGenre = new TextField();
     			Button genreButton = new Button("Search");
+    			genreButton.setOnAction(searchagenre -> {
+					try {
+						displayGenreSearch(searchMovieGenre.getText());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				});
     			
     			searchByGenre.getChildren().addAll(genrelabel, searchMovieGenre, genreButton);
 
 
-//    			HBox searchByTheatre = new HBox();
-//    			Label theatrelabel = new Label("Search by theatre: ");
-//    			TextField searchTheatre = new TextField();
-//    			Button theatreButton = new Button("Search");
-//    			searchByName.getChildren().addAll(theatrelabel, searchTheatre, theatreButton);
-//
-//
     			moviecontainer.getChildren().add(searchByName);
     			moviecontainer.getChildren().add(searchByGenre);
 //    			moviecontainer.getChildren().add(searchByTheatre);
@@ -155,10 +155,65 @@ public class MovieTicketController {
     		
     	
     
-    public void displayNameSearch(String text) throws IOException {
+	public void displayGenreSearch(String text) throws IOException {
+//    	Movie wanted = new Movie(text);
+    	VBox searchContainer = new VBox();
+    	
+    	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
+    	String line = reader.readLine();
+
+    	Insets margin = new Insets(10, 10, 10, 10);
+
+    	while (line != null) {
+    		String movieGenre = line.split("%%%")[5];
+    		String[] words = movieGenre.split(" ");
+    		for (String word: words) {
+	    		if (word.equals(text)) {
+	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1], line.split("%%%")[2]);
+	        		
+	        		HBox moviecontainer = new HBox();
+	        		Label moviename = new Label(line.split("%%%")[0]);
+	        		Label moviegenre = new Label(line.split("%%%")[5]);
+	        		Label movieprice = new Label(line.split("%%%")[4]);
+	        		Label movietheatre = new Label(line.split("%%%")[1]);
+	        		Label movieduration = new Label(line.split("%%%")[3]);
+	        		Label movierating = new Label(line.split("%%%")[2]);
+	        		
+	        		moviename.setPadding(margin);
+	        		moviegenre.setPadding(margin);
+	        		movieprice.setPadding(margin);
+	        		movietheatre.setPadding(margin);
+	        		movieduration.setPadding(margin);
+	        		movierating.setPadding(margin);
+	
+	        		Button watchButton = new Button("Watch this");
+	        		
+	        		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
+	        		watchButton.setPadding(margin);
+	
+	        		moviecontainer.getChildren().addAll(moviename, movietheatre, movierating, movieduration, movieprice, moviegenre, watchButton);
+	        		
+	        		searchContainer.getChildren().addAll(moviecontainer);
+	        		
+	    		}
+    		}
+    		line = reader.readLine();
+
+    	}
+    	
+    	reader.close();
+		Scene allmoviescene = new Scene(searchContainer, 800, 800);
+		applicationStage.setScene(allmoviescene);
+
+	}
+
+
+
+
+
+	public void displayNameSearch(String text) throws IOException {
     	Movie wanted = new Movie(text);
     	VBox searchContainer = new VBox();
-//    	ArrayList<HBox> moviecontainers = new ArrayList<HBox>();
     	
     	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
     	String line = reader.readLine();
