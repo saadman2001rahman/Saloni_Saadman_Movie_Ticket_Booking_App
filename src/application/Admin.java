@@ -1,5 +1,6 @@
 package application;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -59,5 +60,18 @@ public class Admin extends User{
     	return datesInRange;
     }
 	
+    public ArrayList<Schedule> createScheduleList(Date startDate, date endDate, LocalTime[] localTimes){
+    	ArrayList<Date> dates = getDatesBetween(startDate, endDate);
+    	ArrayList<Seat> availSeats = setAllSeats();
+    	ArrayList<Schedule> createdScheduleList = new ArrayList<>();
+    	
+    	for (Date date : dates) {
+    		for(LocalTime selectedTime: localTimes) {
+    			createdScheduleList.add(new Schedule((Date) date.clone(), selectedTime, availSeats));
+    		}
+    	}
+    	
+    	return createdScheduleList;
+    }
 
 }
