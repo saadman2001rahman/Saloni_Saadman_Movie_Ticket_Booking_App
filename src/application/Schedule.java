@@ -25,8 +25,18 @@ public class Schedule {
 		}
 		return false; //seat is booked
 	}
+	
 	public void bookSeat(Seat selectedSeat) {
 		for(Seat seat : this.availableSeats) {
+			if(seat.checkEqual(selectedSeat)) {
+				this.availableSeats.remove(seat);
+				break;
+			}
+		}
+	}
+	
+	public Seat getSeat(Seat selectedSeat) {
+		for(Seat seat: this.availableSeats) {
 			if(seat.checkEqual(selectedSeat)) {
 				return seat;
 			}
