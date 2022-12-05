@@ -1,26 +1,44 @@
 package application;
 
+import java.util.ArrayList;
+
 public class Theater {
+	private int theaterNum;
+	private String type = "normal"; //normal, 3D, Dolby
+	private ArrayList<Schedule> scheduleArrayList;
 	
-	private Seat[] allSeats;
-	private String theaterName;
-	
-	public Theater(Seat[] allSeats, String theaterName) {
-		this.theaterName = theaterName;
-		this.allSeats = allSeats;
-		
+	public Theater(int theaterNum, String type) {
+		this.theaterNum = theaterNum;
+		this.type = type;
 	}
 	
-	public Boolean seatBooked(Schedule date, Seat seat) {
-		return seat.bookingStatus(date);
+	public int getTheaterNum() {
+		return this.theaterNum;
 	}
 	
-	public void bookSeat(Schedule date, Seat seatNumber) {
-		
+	public void setScheduleArrayList(ArrayList<Schedule> scheduleArrayList) {
+		this.scheduleArrayList = scheduleArrayList;
+	}
+	
+	public ArrayList<Schedule> getScheduleArrayList(){
+		return this.scheduleArrayList;
+	}
+	
+    public Boolean checkBooking(Schedule date, Seat seatNumber){
+        return date.checkBooking(seatNumber);
+    }
+
+    public void bookSeat(Schedule date, Seat seatNumber){
+        date.bookSeat(seatNumber);
+    }
+    
+	public String getType() {
+		return type;
 	}
 	
 	public String getTheatreName() {
 		return theaterName;
 	}
+
 
 }

@@ -1,18 +1,59 @@
 package application;
 
-import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.time.Month;
-import java.time.Year;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Schedule {
-	private Year year;
-	private Month month;
-	private DayOfWeek day;
+	private Date scheduledDate;
+	private LocalTime hourMin;
+	private ArrayList<Seat> availableSeats;
+	//for local time: https://www.joda.org/joda-time/apidocs/org/joda/time/LocalTime.html
 	
-	private LocalTime[] time= {LocalTime.of(8, 45), LocalTime.of(10, 15), LocalTime.of(12, 15), LocalTime.of(14, 30), LocalTime.of(16, 10), LocalTime.of(19, 15), LocalTime.of(21, 30)};
-	
-	public Schedule(Year year, Month month, DayOfWeek day) {
-		
+	public Schedule(Date date, LocalTime hourMin, ArrayList<Seat> availableSeats) {
+		this.scheduledDate =date;
+		this.hourMin =hourMin;
+		this.scheduledDate.setHours(hourMin.getHour());
+		this.scheduledDate.setMinutes(hourMin.getMinute());
+		this.availableSeats = availableSeats;
 	}
+	public Boolean checkBooking(Seat selectedSeat) {
+		for(Seat availSeat : this.availableSeats) {
+			if(availSeat.checkEqual(selectedSeat)) {
+				return true; //seat is available
+			}
+		}
+		return false; //seat is booked
+	}
+	
+	public void bookSeat(Seat selectedSeat) {
+		for(Seat seat : this.availableSeats) {
+			if(seat.checkEqual(selectedSeat)) {
+				this.availableSeats.remove(seat);
+				break;
+			}
+		}
+	}
+	
+	public Seat getSeat(Seat selectedSeat) {
+		for(Seat seat: this.availableSeats) {
+			if(seat.checkEqual(selectedSeat)) {
+				return seat;
+			}
+		}
+		return null;
+	}
+	
+	public String getString() {
+		return this.scheduledDate.toString();
+	}
+	
+	public LocalTime getTime() {
+		return this.hourMin;
+	}
+	
+	public ArrayList<Seat> getAvailableSeats(){
+		return this.availableSeats;
+	}
+
 }

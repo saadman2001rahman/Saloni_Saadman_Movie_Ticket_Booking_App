@@ -1,34 +1,29 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
 public class Movie {
 	
-	private String movieName;
+	private String movieName = "";
 	private final String[] movieGenre;
 	private int movieLengthMin;
+	private ArrayList<Theater> theater;
 	private double basePrice;
 	private String theatre;
 	
-//	public Movie (String mName, String[] mGenre, int mLen, double basePrice, Show show) {
-//		super(show);
-//		this.movieName = mName;
-//		this.movieGenre = mGenre;
-//		this.movieLengthMin = mLen;
-//		this.basePrice= basePrice;
-//		
-//	}
-	
-	//this is a seperate constrcutor for testing purposes
-	public Movie (String mName, String[] mGenre, int mLen, double basePrice, String atheatre) {
+	public Movie (String mName, String[] mGenre, int mLen, double basePrice) {
 		this.movieName = mName;
 		this.movieGenre = mGenre;
 		this.movieLengthMin = mLen;
 		this.basePrice= basePrice;
-		theatre = atheatre;
-		
+		this.theater = new ArrayList<>();
+	}
+	
+	public String getMovieName() {
+		return this.movieName;
 	}
 
 	
@@ -62,13 +57,18 @@ public class Movie {
 		return this.basePrice;
 	}
 	
-	public String getMovieName() {
-		return movieName;
+	public void setTheater(ArrayList<Theater> theater) {
+		this.theater = theater;
 	}
 	
-	public String getTheatreName() {
-		return theatre;
+	public void addTheater(Theater theater) {
+		this.theater.add(theater);
 	}
+	
+	public ArrayList<Theater> getTheaters() {
+		return this.theater;
+	}
+
 	
 	public String getGenres() {
 		String result = "";
