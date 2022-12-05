@@ -1,6 +1,4 @@
 package application;
-
-import java.awt.print.Book;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -11,7 +9,7 @@ public class MainClass {
 		Customer amir = new Customer(2, "Amir", 22, 2000);
 		
 		User newUser = new Customer(3, "User", 30, 300);
-		
+		 
 		Movie blackPanther = new Movie("Black Panther", new String[] {"Action", "Thriller", "Superhero"}, 161, 6);
 		Movie interstellar = new Movie("Interstellar", new String[]{"Thriller", "Fatasy", "Sci-Fi"}, 180, 7);
 		
@@ -34,7 +32,7 @@ public class MainClass {
         BookingSystem bookingSys = new BookingSystem();
         bookSys.bookMovieTicket(saloni, blackPanther, t1, schedule1.get(5), new Seat('A', 1));
         bookSys.bookMovieTicket(sadman, blackPanther, t1, schedule1.get(5), new Seat('A', 1));
-        bookSys.bookMovieTicket(amir, blackPanther, t1, schedule1.get(5), new Seat('A', 2));
+        bookSys.bookMovieTicket(amir, blackPanther, t1, schedule1.get(5), new Seat('D', 2));
 
 	}
 	
