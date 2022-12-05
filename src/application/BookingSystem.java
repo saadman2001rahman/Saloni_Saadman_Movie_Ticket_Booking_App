@@ -42,6 +42,9 @@ public class BookingSystem {
 				System.out.println(customer.getName() +" has booked " + seatNumber.getSeat() + " for the movie " + movie.getMovieName() + "playing in theater number " +theater.getTheaterNum() +" at "+ date.getString());
 				System.out.println(customer.getName() + " has paid $" + totalPrice);
 			}
+			else {
+				System.out.println("Customer does not have enough balance");
+			}
 		}
 		else {
 			System.out.println(seatNumber.getSeat() + " for the movie " + movie.getMovieName() + " playing in theatre number " + theater.getTheaterNum() + " at " + date.getString()+ " is already booked!");

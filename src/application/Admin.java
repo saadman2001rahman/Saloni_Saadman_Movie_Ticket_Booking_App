@@ -25,7 +25,7 @@ public class Admin extends User{
 		super(uID, uName, uAge);
 	}
 	
-	public void addMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
+	public void linkMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
 		theaterNum.setScheduleArrayList(availDates);
 		movieToAdd.addTheatre(theaterNum);
 	}
@@ -74,6 +74,7 @@ public class Admin extends User{
     	return datesInRange;
     }
 	
+    
     public ArrayList<Schedule> createScheduleList(Date startDate, Date endDate, LocalTime[] localTimes){
     	ArrayList<Date> dates = getDatesBetween(startDate, endDate);
     	ArrayList<Seat> availSeats = setAllSeats();

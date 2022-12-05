@@ -24,8 +24,8 @@ public class MainClass {
         
         Admin employee = new Admin(4, "employee", 200);
         ArrayList<Schedule> schedule1 = employee.createScheduleList(startDate, endDate, new LocalTime[]{fixedTimes.get(0), fixedTimes.get(2)});
-        employee.addMovie(blackPanther, t1, schedule1);
-        employee.addMovie(interstellar, t2, schedule2);
+        employee.linkMovie(blackPanther, t1, schedule1);
+        employee.linkMovie(interstellar, t2, schedule2);
         
         BookingSystem bookSys = new BookingSystem();
         
