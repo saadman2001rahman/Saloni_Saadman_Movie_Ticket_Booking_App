@@ -1,5 +1,17 @@
 package application;
 
+	
+//	public String getUsername() {
+//		return username;
+//	}
+	
+// 	public void addMovie(Movie amovie) throws IOException {
+// 		String specialChar = "%%%";
+// 	    String movie_representaion = amovie.getMovieName() + specialChar + amovie.getTheatreName() + specialChar + amovie.getRating() + specialChar + amovie.getLen() + specialChar + amovie.getbasePrice() + specialChar + amovie.getGenres();
+// 		BufferedWriter writer = new BufferedWriter(new FileWriter("ListOfMovies.txt", true));
+// 		writer.write(movie_representaion);
+// 		writer.close();
+// 	}
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
