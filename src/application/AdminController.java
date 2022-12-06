@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,12 +28,27 @@ public class AdminController {
 
     @FXML
     private TextField admin_movie_len;
-    
+        
     @FXML
     private TextField admin_movie_rating;
 
     @FXML
     private TextField admin_theatre;
+    
+    @FXML
+    private Label movie_name_error_label;
+    
+    @FXML
+    private Label price_error_label;
+
+    @FXML
+    private Label movie_len_error_label;
+    
+    @FXML
+    private Label number_error_label;
+    
+    @FXML
+    private TextField admin_feature;
 
     private Stage applicationStage;
     
@@ -42,19 +58,40 @@ public class AdminController {
 
     @FXML
     void add_the_movie(ActionEvent event) throws IOException {
-    
+    	boolean movieAdded = false;
+    	
 	    String movieName = admin_movie_name.getText();
-	    String[] movieGenre = admin_movie_genre.getText().split(" ");
-	    int movieLen = Integer.parseInt(admin_movie_len.getText());
-	    double moviePrice = Double.parseDouble(admin_movie_base_price.getText());
-	    String[] movieTheatre = admin_theatre.getText().split(" ");
-	    String movie_rating = admin_movie_rating.getText();
-	    
-	    Movie thismovie = new Movie(movieName, movieGenre, movieLen, moviePrice, movieTheatre, movie_rating);
-	    Admin admin = new Admin("admin", "admin", 0);
-	    admin.addMovieToFile(thismovie);
+	    Validate_Inputs nameofmovie = new Validate_Inputs();
+	    movieAdded = nameofmovie.check_if_movie_exists(movieName);
+	    if (!movieAdded) {
+		    String[] movieGenre = admin_movie_genre.getText().split(" ");
+		    
+		    Validate_Inputs lengthofmovie = new Validate_Inputs(0, 1000);
+		    String len_error_message = lengthofmovie.setValueInt(admin_movie_len.getText());
+		    movie_len_error_label.setText(len_error_message);
+		    
+		    Validate_Inputs priceofmovie = new Validate_Inputs(0.0, 1000.0);
+		    String price_error_message = priceofmovie.setValueDouble(admin_movie_base_price.getText());
+		    price_error_label.setText(price_error_message);
+		    
+		    Validate_Inputs theaternumber = new Validate_Inputs(1, 10);
+		    String theatererrormessage = theaternumber.setValueInt(admin_theatre.getText());
+		    number_error_label.setText(theatererrormessage);
+
+
+		    if (price_error_message.equals("") && len_error_message.equals("") && theatererrormessage.equals("")) {
 	    	
-	    nextController.changethescene();
+			    
+			    Theater atheater = new Theater(theaternumber.getIntVal(), admin_feature.getText());
+			    Movie thismovie = new Movie(movieName, movieGenre, lengthofmovie.getIntVal(), priceofmovie.getDoubleVal(), atheater);
+			    Admin admin = new Admin("admin", "admin", 0);
+			    admin.addMovieToFile(thismovie);
+
+			    nextController.changethescene();
+		    }
+	    } else {
+	    	movie_name_error_label.setText("Movie already exists. Please add a different movie!");
+	    }
 	    
     }
     

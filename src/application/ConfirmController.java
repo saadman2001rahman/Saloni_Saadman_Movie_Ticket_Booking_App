@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -30,6 +31,16 @@ public class ConfirmController {
 
     @FXML
     private Label confirm_price;
+    
+    @FXML
+    private ChoiceBox<String> seat_row;
+    
+    @FXML
+    private ChoiceBox<String> seat_column;
+
+    @FXML
+    private ChoiceBox<String> movie_time;
+
     
     private FinalSceneController nextController;
     
@@ -60,6 +71,12 @@ public class ConfirmController {
         	nextController.setDateAndTime();
         	nextController.setNameOfMovie(thismovie.getMovieName());
         	nextController.setPrice(Double.toString(thismovie.getbasePrice()));
+//        	Validate_Inputs column = new Validate_Inputs();
+//        	String anerror = column.setValueInt(seat_column.getValue());
+        	
+        	nextController.setSeat(new Seat(seat_row.getValue().charAt(0), Integer.parseInt(seat_column.getValue())));
+        	
+        	nextController.setTime(movie_time.getValue());
         	        	
         	nextController.changethescene();
 

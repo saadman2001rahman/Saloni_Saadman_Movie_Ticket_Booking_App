@@ -11,12 +11,14 @@
          <children>
             <Label text="username" />
             <TextField fx:id="login_page_username_field" promptText="username" />
+            <Label fx:id="username_error_label" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="password" />
             <TextField fx:id="login_page_password_field" />
+            <Label fx:id="passowrd_error_label" />
          </children>
       </HBox>
       <Button fx:id="login_page_login_button" mnemonicParsing="false" onAction="#check_login" text="Login" />

@@ -13,22 +13,17 @@ public class Movie {
 	private String movieName = "";
 	private final String[] movieGenre;
 	private int movieLengthMin;
-	private ArrayList<Theater> theater;
-	private String[] theaters;
+	private Theater theater;
 	private String movieRating;
 	private double basePrice;
 	
-	public Movie (String mName, String[] mGenre, int mLen, double basePrice, String[] mTheatres, String mrate) {
+	public Movie (String mName, String[] mGenre, int mLen, double basePrice, Theater mTheatre) {
 		this.movieName = mName;
 		this.movieGenre = mGenre;
 		this.movieLengthMin = mLen;
 		this.basePrice= basePrice;
-		this.movieRating = mrate;
-		if (mTheatres.length == 0) {
-			this.theaters = new String[10];
-		} else {
-			theaters = mTheatres;
-		}
+//		this.movieRating = mrate;
+		theater = mTheatre;
 	}
 	
 	public String getMovieName() {
@@ -66,26 +61,30 @@ public class Movie {
 		return this.basePrice;
 	}
 	
-	public void setTheater(ArrayList<Theater> theater) {
+	public void setTheater(Theater theater) {
 		this.theater = theater;
 	}
 	
-	public void addTheater(Theater theater) {
-		this.theater.add(theater);
+//	public void addTheater(Theater theater) {
+//		this.theater.add(theater);
+//	}
+	
+	public String getTheaterType() {
+		return theater.getType();
 	}
 	
-	public ArrayList<Theater> getTheaters() {
-		return this.theater;
+	public int getTheatreNumber() {
+		return theater.getTheaterNum();
 	}
 	
-	public String gettheatre() {
-		String res = "";
-		for (String aTheater: theaters) {
-			res += aTheater + " ";
-		}
-		
-		return res;
-	}
+//	public String gettheatre() {
+//		String res = "";
+//		for (String aTheater: theaters) {
+//			res += aTheater + " ";
+//		}
+//		
+//		return res;
+//	}
 
 	
 	public String getGenres() {

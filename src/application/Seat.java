@@ -3,26 +3,26 @@ package application;
 public class Seat {
 	private char row;
 	private int column;
-	private String type;
+//	private String type;
 	
 	public Seat(char row, int column) {
 		this.row = row;
 		this.column = column;
 	}
 	
-	public Seat(char row, int column, String type) {
-		this.row = row;
-		this.column = column;
-		this.type = type;
-	}
+//	public Seat(char row, int column, String type) {
+//		this.row = row;
+//		this.column = column;
+//		this.type = type;
+//	}
 	
-	public void setType(String type) {
-		this.type = type;
-	}
-	
-	public String getType() {
-		return this.type;
-	}
+//	public void setType(String type) {
+//		this.type = type;
+//	}
+//	
+//	public String getType() {
+//		return this.type;
+//	}
 	
 	public String getSeat() {
 		return "Seat: " + row + column;

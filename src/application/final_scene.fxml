@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox prefHeight="198.0" prefWidth="593.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.FinalSceneController">
+<VBox prefHeight="198.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FinalSceneController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -40,6 +39,18 @@
          <children>
             <Label text="For: " />
             <Label fx:id="final_name_of_customer" text="this will be the Customer name" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Seat Number: " />
+            <Label fx:id="final_seat" text="This will be the seat number" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Time:" />
+            <Label fx:id="final_time" text="This will be the time" />
          </children>
       </HBox>
    </children>

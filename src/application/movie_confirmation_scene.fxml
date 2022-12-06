@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
+
 
 <VBox prefHeight="461.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfirmController">
    <children>
@@ -29,6 +32,66 @@
          <children>
             <Label text="Total Price:  " />
             <Label fx:id="confirm_price" text="this is the total price" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Choose your seats: " />
+            <ChoiceBox fx:id="seat_row" prefWidth="150.0" >
+				<items>
+            		<FXCollections fx:factory="observableArrayList">
+            			<String fx:value="A" />
+            			<String fx:value="B" />
+            			<String fx:value="C (Recliner seats)" />
+            			<String fx:value="D (Recliner seats)" />
+            			<String fx:value="E (Wheelchair accessible)" />
+            			<String fx:value="F" />
+            			<String fx:value="G" />
+            			<String fx:value="H" />
+            		</FXCollections>
+            	</items>
+            	<HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="seat_column" prefWidth="150.0" >
+            	<items>
+            		<FXCollections fx:factory="observableArrayList">
+            			<String fx:value="1" />
+            			<String fx:value="2" />
+            			<String fx:value="3" />
+            			<String fx:value="4" />
+            			<String fx:value="5" />
+            			<String fx:value="6" />
+            			<String fx:value="7" />
+            			<String fx:value="8" />
+            			<String fx:value="9" />            	
+            			<String fx:value="10" />
+            			<String fx:value="11" />
+            			
+            		</FXCollections>
+            	</items>
+            	<HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </ChoiceBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Select what time yuou want to watch: " />
+            <ChoiceBox fx:id="movie_time" prefWidth="150.0" >
+				<items>
+            		<FXCollections fx:factory="observableArrayList">
+            			<String fx:value="8:30 am" />
+            			<String fx:value="2:00 pm" />
+            			<String fx:value="12:00 am" />
+            		</FXCollections>
+            	</items>
+            	<HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </ChoiceBox>
          </children>
       </HBox>
       <Button fx:id="confirm_button" mnemonicParsing="false" onAction="#movie_confirmed" text="Confirm" />

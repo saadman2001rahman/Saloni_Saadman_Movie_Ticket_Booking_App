@@ -24,6 +24,12 @@ public class FinalSceneController {
     @FXML
     private Label final_theatre_name;
     
+    @FXML
+    private Label final_seat;
+    
+    @FXML
+    private Label final_time;
+    
     private Scene myScene;
     
     private Stage applicationStage;
@@ -49,11 +55,20 @@ public class FinalSceneController {
     void setPrice(String price) {
     	final_price.setText(price);
     }
+    
+    void setSeat(Seat aseat) {
+    	final_seat.setText(aseat.getSeat());
+    }
+    
+    void setTime(String atime) {
+    	final_time.setText(atime);
+    }
 
     void setMyScene(Scene ascene) {
     	myScene = ascene;
     }
     
+   
     void setPrimaryStage(Stage astage) {
     	applicationStage = astage;
     }
