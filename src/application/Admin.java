@@ -49,7 +49,7 @@ public class Admin extends User{
 		}
 		return availSeats;
 	}
-	
+	//https://www.baeldung.com/java-between-dates
     private static Calendar getCalendarWithoutTime(Date date) {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
