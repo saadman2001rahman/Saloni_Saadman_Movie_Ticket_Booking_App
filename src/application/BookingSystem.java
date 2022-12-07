@@ -10,11 +10,11 @@ public class BookingSystem {
         double totalAmount = amovie.getbasePrice();
         String theater = amovie.getTheaterType();
         
-        if(theater == "3D"){
-            totalAmount *= 0.1;
+        if(theater.equals("3D")){
+            totalAmount *= 1.1;
         }
-        else if (theater == "Dolby") {
-            totalAmount += 0.2 ;
+        else if (theater.equals("Dolby")) {
+            totalAmount *= 1.2 ;
         }
 
 //        if(date.getTime().isAfter(LocalTime.of(12,0))){
@@ -25,7 +25,7 @@ public class BookingSystem {
 //        }
 
         if(seatNum.getRow() == "C".charAt(0) || seatNum.getRow() == "D".charAt(0)){
-            totalAmount *= 0.2 ;
+            totalAmount *= 1.2 ;
         }
         //https://mkyong.com/java/how-to-round-double-float-value-to-2-decimal-points-in-java/
         DecimalFormat df = new DecimalFormat("0.00");
