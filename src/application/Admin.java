@@ -39,6 +39,11 @@ public class Admin extends User{
 //	}
 	
  	public void addMovieToFile(Movie amovie) throws IOException {
+ 		/*
+ 		 * Adds a movie to file 
+ 		 * @param: amovie: Movie
+ 		 * @return:void
+ 		 */
 		String specialChar = "%%%";
 	    String movie_representaion = amovie.getMovieName() + specialChar + "In theater: " + specialChar + amovie.getTheatreNumber() + specialChar + amovie.getTheaterType() + specialChar + amovie.getLen() + specialChar + amovie.getbasePrice() + specialChar + amovie.getGenres();
 		BufferedWriter writer = new BufferedWriter(new FileWriter("src/application/ListOfMovies.txt", true));

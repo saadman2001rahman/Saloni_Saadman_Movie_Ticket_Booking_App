@@ -66,7 +66,8 @@ public class MovieTicketController {
 //    private Label nameerrorlabel;
 
 
-    @FXML Button new_acc_button;
+    @FXML 
+    Button new_acc_button;
     
     private Customer thiscustomer;
     
@@ -175,7 +176,7 @@ public class MovieTicketController {
     	int totalmovies = 0;
     	
     	while (line != null) {
-    		String movieGenre = line.split("%%%")[5];
+    		String movieGenre = line.split("%%%")[6];
     		String[] words = movieGenre.split(" ");
     		for (String word: words) {
 	    		if (word.equals(text)) {
@@ -185,11 +186,11 @@ public class MovieTicketController {
 	        		
 	        		HBox moviecontainer = new HBox();
 	        		Label moviename = new Label(line.split("%%%")[0]);
-	        		Label moviegenre = new Label(line.split("%%%")[5]);
-	        		Label movieprice = new Label(line.split("%%%")[4]);
-	        		Label movietheatre = new Label(line.split("%%%")[1]);
-	        		Label movieduration = new Label(line.split("%%%")[3]);
-	        		Label movierating = new Label(line.split("%%%")[2]);
+	        		Label moviegenre = new Label(line.split("%%%")[6]);
+	        		Label movieprice = new Label(line.split("%%%")[5]);
+	        		Label movietheatre = new Label(line.split("%%%")[2]);
+	        		Label movieduration = new Label(line.split("%%%")[4]);
+	        		Label movierating = new Label(line.split("%%%")[3]);
 	        		
 	        		moviename.setPadding(margin);
 	        		moviegenre.setPadding(margin);
@@ -242,11 +243,11 @@ public class MovieTicketController {
 	        		
 	        		HBox moviecontainer = new HBox();
 	        		Label moviename = new Label(line.split("%%%")[0]);
-	        		Label moviegenre = new Label(line.split("%%%")[5]);
-	        		Label movieprice = new Label(line.split("%%%")[4]);
-	        		Label movietheatre = new Label(line.split("%%%")[1]);
-	        		Label movieduration = new Label(line.split("%%%")[3]);
-	        		Label movierating = new Label(line.split("%%%")[2]);
+	        		Label moviegenre = new Label(line.split("%%%")[6]);
+	        		Label movieprice = new Label(line.split("%%%")[5]);
+	        		Label movietheatre = new Label(line.split("%%%")[2]);
+	        		Label movieduration = new Label(line.split("%%%")[4]);
+	        		Label movierating = new Label(line.split("%%%")[3]);
 	        		
 	        		moviename.setPadding(margin);
 	        		moviegenre.setPadding(margin);
@@ -344,10 +345,11 @@ public class MovieTicketController {
     		
     		HBox moviecontainer = new HBox();
     		Label moviename = new Label(line.split("%%%")[0]);
-    		Label moviegenre = new Label(line.split("%%%")[5]);
-    		Label movieprice = new Label(line.split("%%%")[4]);
-    		Label movietheatre = new Label(line.split("%%%")[1]);
-    		Label movieduration = new Label(line.split("%%%")[3]);
+    		Label moviegenre = new Label(line.split("%%%")[6]);
+    		Label movieprice = new Label(line.split("%%%")[5]);
+    		Label movietheatre = new Label(line.split("%%%")[2]);
+    		Label movieduration = new Label(line.split("%%%")[4]);
+    		Label movierating = new Label(line.split("%%%")[3]);
     		
     		moviename.setPadding(margin);
     		moviegenre.setPadding(margin);

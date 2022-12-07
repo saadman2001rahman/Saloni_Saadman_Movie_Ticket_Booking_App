@@ -24,7 +24,7 @@ public class Main extends Application {
 			controller.setMyScene(scene);
 
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("a title");
+			primaryStage.setTitle("Movie Ticket Booking System");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

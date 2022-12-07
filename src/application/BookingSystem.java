@@ -7,6 +7,12 @@ public class BookingSystem {
 	
 	
 	public double calculateTotalPrice(Movie amovie, Seat seatNum) {
+ 		/*
+ 		 * Calculates total price of movie, depends on seat selected as well as type of movie 
+ 		 * @param: amovie: Movie, seatNum: Seat
+ 		 * @return: totalPrice: double
+ 		 */
+
         double totalAmount = amovie.getbasePrice();
         String theater = amovie.getTheaterType();
         

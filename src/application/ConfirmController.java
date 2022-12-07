@@ -57,10 +57,12 @@ public class ConfirmController {
 
     @FXML
     void movie_confirmed(ActionEvent event) {
+    	//Activates when user presses confirm button for movie
     	try {
     		FXMLLoader finalloader = new FXMLLoader();
     		VBox finalScene = finalloader.load(new FileInputStream("src/application/final_scene.fxml"));
     		
+    		//loads fxml file for final scene, and transfers all relevent data from current scene to final scene
     		nextController = finalloader.getController();
     		nextController.setPrimaryStage(applicationStage);
     		nextController.setMyScene(new Scene(finalScene));
@@ -71,10 +73,10 @@ public class ConfirmController {
         	nextController.setDateAndTime();
         	nextController.setNameOfMovie(thismovie.getMovieName());
         	
+        	
+        	//calculates final price of movie
         	BookingSystem calculator = new BookingSystem();
         	
-//        	Validate_Inputs column = new Validate_Inputs();
-//        	String anerror = column.setValueInt(seat_column.getValue());
         	Seat thisseat = new Seat(seat_row.getValue().charAt(0), Integer.parseInt(seat_column.getValue()));
         	nextController.setSeat(thisseat);
         	
