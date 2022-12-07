@@ -1,5 +1,9 @@
 package application;
 
+	
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import java.time.LocalTime;
 
@@ -25,30 +29,44 @@ public class Admin extends User{
 		super(uID, uName, uAge);
 	}
 	
+//	public void addMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
+//		theaterNum.setScheduleArrayList(availDates);
+//		movieToAdd.addTheater(theaterNum);
+//	}
 	public void linkMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
 		theaterNum.setScheduleArrayList(availDates);
 		movieToAdd.addTheatre(theaterNum);
 	}
 	
-	private static ArrayList<Seat> setAllSeats(){
-		ArrayList<Seat>availSeats = new ArrayList<>();
-		char[] rowArr = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-		int[] columnArr = {1,2,3,4,5,6,7,8,9,10,11};
-		for (char row : rowArr) {
-			for( int column : columnArr) {
-				if(row == 'E' && column >= 4 && column <=8) {
-					availSeats.add(new Seat(row, column, "wheelchair"));
-				}
-				else if(row =='D' || row == 'C') {
-					availSeats.add(new Seat(row, column, "recliner"));
-				}
-				else {
-					availSeats.add(new Seat(row, column, "normal"));
-				}
-			}
-		}
-		return availSeats;
+ 	public void addMovieToFile(Movie amovie) throws IOException {
+		String specialChar = "%%%";
+	    String movie_representaion = amovie.getMovieName() + specialChar + "In theater: " + specialChar + amovie.getTheatreNumber() + specialChar + amovie.getTheaterType() + specialChar + amovie.getLen() + specialChar + amovie.getbasePrice() + specialChar + amovie.getGenres();
+		BufferedWriter writer = new BufferedWriter(new FileWriter("src/application/ListOfMovies.txt", true));
+		writer.write(movie_representaion + "\n");
+		writer.close();
 	}
+
+	
+//	private static ArrayList<Seat> setAllSeats(){
+//		ArrayList<Seat>availSeats = new ArrayList<>();
+//		char[] rowArr = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+//		int[] columnArr = {1,2,3,4,5,6,7,8,9,10,11};
+//		for (char row : rowArr) {
+//			for( int column : columnArr) {
+//				if(row == 'E' && column >= 4 && column <=8) {
+//					availSeats.add(new Seat(row, column, "wheelchair"));
+//				}
+//				else if(row =='D' || row == 'C') {
+//					availSeats.add(new Seat(row, column, "recliner"));
+//				}
+//				else {
+//					availSeats.add(new Seat(row, column, "normal"));
+//				}
+//			}
+//		}
+//		return availSeats;
+//	}
+	
 	//https://www.baeldung.com/java-between-dates
     private static Calendar getCalendarWithoutTime(Date date) {
         Calendar calendar = new GregorianCalendar();

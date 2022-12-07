@@ -11,6 +11,7 @@
          <children>
             <Label text="Movie name" />
             <TextField fx:id="admin_movie_name" />
+            <Label fx:id="movie_name_error_label" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -21,26 +22,29 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie rating" />
-            <TextField fx:id="admin_movie_rating" />
+            <Label text="Movie Feature" />
+            <TextField fx:id="admin_feature" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Theatre" />
+            <Label text="Theatre Number" />
             <TextField fx:id="admin_theatre" />
+            <Label fx:id="number_error_label" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Movie length in minutes" />
             <TextField fx:id="admin_movie_len" />
+            <Label fx:id="movie_len_error_label" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Base price" />
             <TextField fx:id="admin_movie_base_price" />
+            <Label fx:id="price_error_label" />
          </children>
       </HBox>
       <Button fx:id="add_movie_button" mnemonicParsing="false" onAction="#add_the_movie" text="Add movie" />

@@ -1,3 +1,1 @@
-Movie 1%%%Cineplex%%%R%%%120%%%15%%%action
-Movie 2%%%IMax%%%G%%%100%%%10%%%action adventure
-Movie 3%%%Disney%%%G%%%90%%%100%%%comedy romance
+Movie 1%%%In theater: %%%1%%%Dolby%%%120%%%20.0%%%action adventure 

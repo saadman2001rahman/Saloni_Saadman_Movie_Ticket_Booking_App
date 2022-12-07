@@ -48,12 +48,24 @@ public class MovieTicketController {
     @FXML
     private TextField login_page_password_field;
         
-    @FXML 
-    private ChoiceBox movies_choicebox;
+//    @FXML 
+//    private ChoiceBox movies_choicebox;
     
     @FXML
     private Button rent_movies_button;
     
+    @FXML
+    private Label username_error_label;
+    
+    
+    @FXML
+    private Label passowrd_error_label;
+
+//    private Label genreerrorlabel;
+//
+//    private Label nameerrorlabel;
+
+
     @FXML Button new_acc_button;
     
     private Customer thiscustomer;
@@ -70,8 +82,8 @@ public class MovieTicketController {
     	String user_name = login_page_username_field.getText();
     	String password = login_page_password_field.getText();
     	
-    	boolean successful_login = true;
-    	boolean admin_login = false;
+//    	boolean successful_login = true;
+//    	boolean admin_login = false;
     	
     	//in case there is an error in the changing of scenes
     	Label temp_label = new Label("This is just temporary. Teting whether the scene changes to a new scene from login page.");
@@ -107,28 +119,30 @@ public class MovieTicketController {
     			Label namelabel = new Label("Search by name of Movie: ");
     			TextField searchMovieName = new TextField();
     			Button nameButton = new Button("Search");
+    			Label nameerrorlabel = new Label("");
     			nameButton.setOnAction(search -> {
 					try {
-						displayNameSearch(searchMovieName.getText());
+						displayNameSearch(searchMovieName.getText(), nameerrorlabel);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				});
-    			searchByName.getChildren().addAll(namelabel, searchMovieName, nameButton);
+    			searchByName.getChildren().addAll(namelabel, searchMovieName, nameButton, nameerrorlabel);
     			
     			HBox searchByGenre = new HBox();
     			Label genrelabel = new Label("Search by genre of Movie: ");
     			TextField searchMovieGenre = new TextField();
     			Button genreButton = new Button("Search");
+    			Label genreerrorlabel = new Label("");
     			genreButton.setOnAction(searchagenre -> {
 					try {
-						displayGenreSearch(searchMovieGenre.getText());
+						displayGenreSearch(searchMovieGenre.getText(), genreerrorlabel);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				});
     			
-    			searchByGenre.getChildren().addAll(genrelabel, searchMovieGenre, genreButton);
+    			searchByGenre.getChildren().addAll(genrelabel, searchMovieGenre, genreButton, genreerrorlabel);
 
 
     			moviecontainer.getChildren().add(searchByName);
@@ -145,17 +159,11 @@ public class MovieTicketController {
     			Scene allmoviescene = new Scene(moviecontainer, 800, 800);
     			applicationStage.setScene(allmoviescene);
     			
-    		} else {
-    			System.out.println("Creds not right");
-    		}
+    		} 
     	}
     }
-
-    	
-    		
-    	
-    
-	public void displayGenreSearch(String text) throws IOException {
+  
+	public void displayGenreSearch(String text, Label errorlabel) throws IOException {
 //    	Movie wanted = new Movie(text);
     	VBox searchContainer = new VBox();
     	
@@ -163,13 +171,17 @@ public class MovieTicketController {
     	String line = reader.readLine();
 
     	Insets margin = new Insets(10, 10, 10, 10);
-
+    	
+    	int totalmovies = 0;
+    	
     	while (line != null) {
     		String movieGenre = line.split("%%%")[5];
     		String[] words = movieGenre.split(" ");
     		for (String word: words) {
 	    		if (word.equals(text)) {
-	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1], line.split("%%%")[2]);
+	    			totalmovies++;
+	    			
+	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[6].split(" "), Integer.parseInt(line.split("%%%")[4]), Double.parseDouble(line.split("%%%")[5]), new Theater(Integer.parseInt(line.split("%%%")[2]), line.split("%%%")[3]));
 	        		
 	        		HBox moviecontainer = new HBox();
 	        		Label moviename = new Label(line.split("%%%")[0]);
@@ -198,34 +210,35 @@ public class MovieTicketController {
 	    		}
     		}
     		line = reader.readLine();
-
     	}
     	
     	reader.close();
-		Scene allmoviescene = new Scene(searchContainer, 800, 800);
-		applicationStage.setScene(allmoviescene);
-
+    	
+    	if (totalmovies == 0) {
+    		errorlabel.setText("No such movies found.");
+    	} else {
+    		Scene allmoviescene = new Scene(searchContainer, 800, 800);
+    		applicationStage.setScene(allmoviescene);
+    	}
 	}
 
-
-
-
-
-	public void displayNameSearch(String text) throws IOException {
-    	Movie wanted = new Movie(text);
+	public void displayNameSearch(String text, Label errorlabel) throws IOException {
+		
     	VBox searchContainer = new VBox();
     	
     	BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
     	String line = reader.readLine();
 
     	Insets margin = new Insets(10, 10, 10, 10);
+    	int totalmovies = 0;
 
     	while (line != null) {
     		String movieName = line.split("%%%")[0];
     		String[] words = movieName.split(" ");
     		for (String word: words) {
 	    		if (word.equals(text)) {
-	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1], line.split("%%%")[2]);
+	        		totalmovies++;
+	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[6].split(" "), Integer.parseInt(line.split("%%%")[4]), Double.parseDouble(line.split("%%%")[5]), new Theater(Integer.parseInt(line.split("%%%")[2]), line.split("%%%")[3]));
 	        		
 	        		HBox moviecontainer = new HBox();
 	        		Label moviename = new Label(line.split("%%%")[0]);
@@ -258,14 +271,15 @@ public class MovieTicketController {
     	}
     	
     	reader.close();
-		Scene allmoviescene = new Scene(searchContainer, 800, 800);
-		applicationStage.setScene(allmoviescene);
+    	
+		if (totalmovies == 0) {
+			errorlabel.setText("No such movies found.");
+    	} else {
+    		Scene allmoviescene = new Scene(searchContainer, 800, 800);
+    		applicationStage.setScene(allmoviescene);
+    	}
 
 	}
-
-
-
-
 
 	@FXML
     void make_customer_account(ActionEvent thisisanewcustomer) {
@@ -287,21 +301,35 @@ public class MovieTicketController {
     }
     
     boolean checkuser(String name, String pass) throws IOException {
+
+    	boolean userfound = false;
+    	boolean passed = true;
     	BufferedReader reader = new BufferedReader(new FileReader("src/application/List_of_customers.txt"));
     	String line = reader.readLine();
     	while (line != null) {
     		String username = line.split("%%%")[0];
     		String password = line.split("%%%")[1];
     		
-    		if (username.equals(name) && password.equals(pass)) {
-    			reader.close();
-    			thiscustomer = new Customer(username, line.split("%%%")[2], Integer.parseInt(line.split("%%%")[3]), 0);
-    			return true;
+    		if (username.equals(name)) {
+    			userfound = true;
+    			if (!password.equals(pass)) {
+    				passed = false;
+    				passowrd_error_label.setText("Password does not match with account!");
+    			} else {
+        			thiscustomer = new Customer(username, line.split("%%%")[2], Integer.parseInt(line.split("%%%")[3]), 0);
+        			reader.close();
+        			return true;
+    			}
     		}   
     		line = reader.readLine();
     	}
     	reader.close();
-    	return false;
+    	if (!userfound) {
+        	username_error_label.setText("Username does not exist. Please try a different username or make an account!");
+        	return false;
+    	}   
+    	
+    	return passed;
     }
     
     ArrayList<HBox> getAllMovies() throws IOException {
@@ -320,16 +348,14 @@ public class MovieTicketController {
     		Label movieprice = new Label(line.split("%%%")[4]);
     		Label movietheatre = new Label(line.split("%%%")[1]);
     		Label movieduration = new Label(line.split("%%%")[3]);
-    		Label movierating = new Label(line.split("%%%")[2]);
     		
     		moviename.setPadding(margin);
     		moviegenre.setPadding(margin);
     		movieprice.setPadding(margin);
     		movietheatre.setPadding(margin);
     		movieduration.setPadding(margin);
-    		movierating.setPadding(margin);
     		
-    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[5].split(" "), Integer.parseInt(line.split("%%%")[3]), Double.parseDouble(line.split("%%%")[4]), line.split("%%%")[1].split(" ")), line.split("%%%")[2]);
+    		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[6].split(" "), Integer.parseInt(line.split("%%%")[4]), Double.parseDouble(line.split("%%%")[5]), new Theater(Integer.parseInt(line.split("%%%")[2]), line.split("%%%")[3]));
 
     		
     		Button watchButton = new Button("Watch this");
@@ -340,7 +366,7 @@ public class MovieTicketController {
     		
 
     		
-    		moviecontainer.getChildren().addAll(moviename, movietheatre, movierating, movieduration, movieprice, moviegenre, watchButton);
+    		moviecontainer.getChildren().addAll(moviename, movietheatre, movieduration, movieprice, moviegenre, watchButton);
 
     		
 //    		String movieName = line.split("%%%")[0];

@@ -4,66 +4,83 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Movie{
-    private String movieName = "";
-    private final String[] movieGenre;
-    private int movieLengthMin;
-    private ArrayList<Theater> theatre;
-    private double basePrice;
 
-    public Movie(String mName,String[] mGenre, int mLen,double basePrice){
-        this.movieName = mName;
-        this.movieGenre = mGenre;
-        this.movieLengthMin = mLen;
-        this.basePrice = basePrice;
-        this.theatre = new ArrayList<>();
-    }
+public class Movie {
+	
+	private String movieName = "";
+	private final String[] movieGenre;
+	private int movieLengthMin;
+	private Theater theater;
+	private String movieRating;
+	private double basePrice;
+	
+	public Movie (String mName, String[] mGenre, int mLen, double basePrice, Theater mTheatre) {
+		this.movieName = mName;
+		this.movieGenre = mGenre;
+		this.movieLengthMin = mLen;
+		this.basePrice= basePrice;
+//		this.movieRating = mrate;
+		theater = mTheatre;
+	}
+	
+	public String getMovieName() {
+		return this.movieName;
+	}
+		
+	
+	public Boolean movieGenreMatch(String[] movieGenre, String[] selectedGenre) {
+		int counter = 0;
+		if(Arrays.equals(movieGenre, selectedGenre)) {
+			return true;
+		}
+		for(String genre: selectedGenre) {
+			for(String sGenre : movieGenre) {
+				if(Objects.equals(genre, sGenre)){
+					counter ++;
+					break;
+				}
+			}
+		}
+		return counter == selectedGenre.length;
+	}
+	
+	public Movie getMovieFromGenre(String[] mGenre) {
+		if (movieGenreMatch(this.movieGenre, mGenre)) {
+			return this;
+		}
+		
+		else {
+			return null;
+		}
+	}
 
-    public String getMovieName(){
-        return this.movieName;
-    }
-
-    public Boolean movieGenreMatch(String[] movieGenre, String[] selectedGenre){
-        int counter = 0;
-        if(Arrays.equals(movieGenre, selectedGenre)){
-            return true;
-        }
-        for(String genre: selectedGenre){
-            for(String sGenre : movieGenre){
-                if(Objects.equals(genre, sGenre)) {
-                    counter++;
-                    break;
-                }
-            }
-        }
-        return counter == selectedGenre.length;
-    }
-
-    public Movie getMovieFromGenre(String[] mGenre){
-        if (movieGenreMatch(this.movieGenre, mGenre)){
-            return this;
-        }
-        else{
-            return null;
-        }
-    }
-
-    public double getBasePrice(){
-        return this.basePrice;
-    }
-
-    public void setTheatre(ArrayList<Theater> theatre){
-        this.theatre = theatre;
-    }
-
-    public void addTheatre(Theater theatre){
-        this.theatre.add(theatre);
-    }
-
-    public ArrayList<Theater> getTheatres(){
-        return this.theatre;
-    }
-
-
+	public double getbasePrice() {
+		return this.basePrice;
+	}
+	
+	public void setTheater(Theater theater) {
+		this.theater = theater;
+	}
+	
+//	public void addTheater(Theater theater) {
+//		this.theater.add(theater);
+//	}
+	
+	public String getTheaterType() {
+		return theater.getType();
+	}
+	
+	public int getTheatreNumber() {
+		return theater.getTheaterNum();
+	}
+	
+//	public String gettheatre() {
+//		String res = "";
+//		for (String aTheater: theaters) {
+//			res += aTheater + " ";
+//		}
+//		
+//		return res;
+//	}
 
 }
