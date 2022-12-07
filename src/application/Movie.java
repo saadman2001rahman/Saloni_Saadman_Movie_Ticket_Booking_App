@@ -1,12 +1,9 @@
 package application;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Objects;
+
 
 public class Movie {
 	
@@ -86,21 +83,4 @@ public class Movie {
 //		return res;
 //	}
 
-	
-	public String getGenres() {
-		String result = "";
-		for (String n: movieGenre) {
-			result += n + " ";
-		}
-		return result;
-	}
-	
-	public String getLen() {
-		return Integer.toString(movieLengthMin);
-	}
-	
-	public String getRating() {
-		return movieRating;
-	}
-	
 }

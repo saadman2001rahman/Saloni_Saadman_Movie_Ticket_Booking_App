@@ -5,17 +5,27 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import java.time.LocalTime;
+
 //	public String getUsername() {
 //		return username;
 //	}
 	
+// 	public void addMovie(Movie amovie) throws IOException {
+// 		String specialChar = "%%%";
+// 	    String movie_representaion = amovie.getMovieName() + specialChar + amovie.getTheatreName() + specialChar + amovie.getRating() + specialChar + amovie.getLen() + specialChar + amovie.getbasePrice() + specialChar + amovie.getGenres();
+// 		BufferedWriter writer = new BufferedWriter(new FileWriter("ListOfMovies.txt", true));
+// 		writer.write(movie_representaion);
+// 		writer.close();
+// 	}
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Admin extends User{
-	public Admin(String uID, String uName, int uAge) {
+	public Admin(int uID, String uName, int uAge) {
 		super(uID, uName, uAge);
 	}
 	
@@ -23,6 +33,10 @@ public class Admin extends User{
 //		theaterNum.setScheduleArrayList(availDates);
 //		movieToAdd.addTheater(theaterNum);
 //	}
+	public void linkMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
+		theaterNum.setScheduleArrayList(availDates);
+		movieToAdd.addTheatre(theaterNum);
+	}
 	
  	public void addMovieToFile(Movie amovie) throws IOException {
 		String specialChar = "%%%";
@@ -53,6 +67,7 @@ public class Admin extends User{
 //		return availSeats;
 //	}
 	
+	//https://www.baeldung.com/java-between-dates
     private static Calendar getCalendarWithoutTime(Date date) {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
@@ -77,5 +92,19 @@ public class Admin extends User{
     	return datesInRange;
     }
 	
+    
+    public ArrayList<Schedule> createScheduleList(Date startDate, Date endDate, LocalTime[] localTimes){
+    	ArrayList<Date> dates = getDatesBetween(startDate, endDate);
+    	ArrayList<Seat> availSeats = setAllSeats();
+    	ArrayList<Schedule> createdScheduleList = new ArrayList<>();
+    	
+    	for (Date date : dates) {
+    		for(LocalTime selectedTime: localTimes) {
+    			createdScheduleList.add(new Schedule((Date) date.clone(), selectedTime, availSeats));
+    		}
+    	}
+    	
+    	return createdScheduleList;
+    }
 
 }

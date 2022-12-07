@@ -49,6 +49,7 @@ public class BookingSystem {
 //			System.out.println(seatNumber.getSeat() + " for the movie " + movie.getMovieName() + " playing in theatre number " + theater.getTheaterNum() + " at " + date.getString()+ " is already booked!");
 //		}
 //	}
+
 	public Boolean checkBooking(Theater theater, Schedule date, Seat seatNum) {
 		return theater.checkBooking(date, seatNum);
 	}
