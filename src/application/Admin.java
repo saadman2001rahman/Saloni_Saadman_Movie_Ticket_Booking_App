@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Admin extends User{
-	public Admin(int uID, String uName, int uAge) {
+	public Admin(String uID, String uName, int uAge) {
 		super(uID, uName, uAge);
 	}
 	
@@ -33,10 +33,10 @@ public class Admin extends User{
 //		theaterNum.setScheduleArrayList(availDates);
 //		movieToAdd.addTheater(theaterNum);
 //	}
-	public void linkMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
-		theaterNum.setScheduleArrayList(availDates);
-		movieToAdd.addTheatre(theaterNum);
-	}
+//	public void linkMovie(Movie movieToAdd, Theater theaterNum, ArrayList<Schedule>availDates) {
+//		theaterNum.setScheduleArrayList(availDates);
+//		movieToAdd.addTheatre(theaterNum);
+//	}
 	
  	public void addMovieToFile(Movie amovie) throws IOException {
 		String specialChar = "%%%";
@@ -93,18 +93,18 @@ public class Admin extends User{
     }
 	
     
-    public ArrayList<Schedule> createScheduleList(Date startDate, Date endDate, LocalTime[] localTimes){
-    	ArrayList<Date> dates = getDatesBetween(startDate, endDate);
-    	ArrayList<Seat> availSeats = setAllSeats();
-    	ArrayList<Schedule> createdScheduleList = new ArrayList<>();
-    	
-    	for (Date date : dates) {
-    		for(LocalTime selectedTime: localTimes) {
-    			createdScheduleList.add(new Schedule((Date) date.clone(), selectedTime, availSeats));
-    		}
-    	}
-    	
-    	return createdScheduleList;
-    }
+//    public ArrayList<Schedule> createScheduleList(Date startDate, Date endDate, LocalTime[] localTimes){
+//    	ArrayList<Date> dates = getDatesBetween(startDate, endDate);
+//    	ArrayList<Seat> availSeats = setAllSeats();
+//    	ArrayList<Schedule> createdScheduleList = new ArrayList<>();
+//    	
+//    	for (Date date : dates) {
+//    		for(LocalTime selectedTime: localTimes) {
+//    			createdScheduleList.add(new Schedule((Date) date.clone(), selectedTime, availSeats));
+//    		}
+//    	}
+//    	
+//    	return createdScheduleList;
+//    }
 
 }

@@ -83,4 +83,21 @@ public class Movie {
 //		return res;
 //	}
 
+	public String getGenres() {
+		String result = "";
+		for (String n: movieGenre) {
+			result += n + " ";
+		}
+		return result;
+	}
+	
+	public String getLen() {
+		return Integer.toString(movieLengthMin);
+	}
+	
+	public String getRating() {
+		return movieRating;
+	}
+
+
 }
