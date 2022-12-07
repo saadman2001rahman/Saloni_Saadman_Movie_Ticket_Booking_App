@@ -70,13 +70,19 @@ public class ConfirmController {
         	nextController.setNameOfTheatre(thismovie.getMovieName());
         	nextController.setDateAndTime();
         	nextController.setNameOfMovie(thismovie.getMovieName());
-        	nextController.setPrice(Double.toString(thismovie.getbasePrice()));
+        	
+        	BookingSystem calculator = new BookingSystem();
+        	
 //        	Validate_Inputs column = new Validate_Inputs();
 //        	String anerror = column.setValueInt(seat_column.getValue());
-        	
-        	nextController.setSeat(new Seat(seat_row.getValue().charAt(0), Integer.parseInt(seat_column.getValue())));
+        	Seat thisseat = new Seat(seat_row.getValue().charAt(0), Integer.parseInt(seat_column.getValue()));
+        	nextController.setSeat(thisseat);
         	
         	nextController.setTime(movie_time.getValue());
+        	
+        	nextController.setPrice(Double.toString(calculator.calculateTotalPrice(thismovie, thisseat)));
+
+
         	        	
         	nextController.changethescene();
 
