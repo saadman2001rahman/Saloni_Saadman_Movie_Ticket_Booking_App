@@ -4,4 +4,5 @@ Black Panther%%%In theater: %%%3%%%Dolby%%%120%%%20.0%%%action
 Avatar%%%In theater: %%%6%%%3D%%%200%%%25.0%%%action adventure 
 Love Rosie%%%In theater: %%%8%%%Dolby%%%120%%%15.0%%%romance 
 Rush Hour%%%In theater: %%%1%%%Dolby%%%120%%%15.0%%%comedy 
-Movie 3%%%In theater: %%%9%%%3D%%%120%%%15.0%%%action comdey 
+Movie 3%%%In theater: %%%9%%%3D%%%120%%%15.0%%%action comedey 
+Movie one two%%%In theater: %%%8%%%3D%%%300%%%30.0%%%action comedy 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -7,37 +8,68 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.collections.FXCollections?>
 
-
 <VBox prefHeight="461.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfirmController">
    <children>
+      <Label text="Confirmation of your Movie">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </Label>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie Name: " />
-            <Label fx:id="confirm_name" text="this is the name of the movie" />
+            <Label text="Movie Name: ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="confirm_name" text="this is the name of the movie">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie genre: " />
-            <Label fx:id="confirm_genre" text="these are the movie genres" />
+            <Label text="Movie genre: ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="confirm_genre" text="these are the movie genres">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Theatre Name: " />
-            <Label fx:id="confirm_theatre" text="this is the name of the theatre" />
+            <Label text="Theatre Number: ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="confirm_theatre" text="this is the name of the theatre">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Total Price:  " />
-            <Label fx:id="confirm_price" text="this is the total price" />
+            <Label text="Total Price:  ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="confirm_price" text="this is the total price">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Choose your seats: " />
-            <ChoiceBox fx:id="seat_row" prefWidth="150.0" >
+            <Label text="Choose your seats: ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <ChoiceBox fx:id="seat_row" prefWidth="150.0">
 				<items>
             		<FXCollections fx:factory="observableArrayList">
             			<String fx:value="A" />
@@ -54,7 +86,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </ChoiceBox>
-            <ChoiceBox fx:id="seat_column" prefWidth="150.0" >
+            <ChoiceBox fx:id="seat_column" prefWidth="150.0">
             	<items>
             		<FXCollections fx:factory="observableArrayList">
             			<String fx:value="1" />
@@ -75,12 +107,20 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </ChoiceBox>
+            <Label text="*Recliner Seats have an extra 20% charge" textFill="#ff9000">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Select what time yuou want to watch: " />
-            <ChoiceBox fx:id="movie_time" prefWidth="150.0" >
+            <Label text="Select what time yuou want to watch: ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <ChoiceBox fx:id="movie_time" prefWidth="150.0">
 				<items>
             		<FXCollections fx:factory="observableArrayList">
             			<String fx:value="8:30 am" />
@@ -94,7 +134,13 @@
             </ChoiceBox>
          </children>
       </HBox>
-      <Button fx:id="confirm_button" mnemonicParsing="false" onAction="#movie_confirmed" text="Confirm" />
-      <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#movie_cancelled" prefHeight="31.0" prefWidth="73.0" text="Cancel" />
+      <Button fx:id="confirm_button" mnemonicParsing="false" onAction="#movie_confirmed" text="Confirm">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></Button>
+      <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#movie_cancelled" prefHeight="31.0" prefWidth="73.0" text="Cancel">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></Button>
    </children>
 </VBox>

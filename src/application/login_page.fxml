@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -9,19 +10,37 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="username" />
-            <TextField fx:id="login_page_username_field" promptText="username" />
+            <Label text="username">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="login_page_username_field" promptText="username">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
             <Label fx:id="username_error_label" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="password" />
-            <TextField fx:id="login_page_password_field" />
+            <Label text="password">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="login_page_password_field">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
             <Label fx:id="passowrd_error_label" />
          </children>
       </HBox>
-      <Button fx:id="login_page_login_button" mnemonicParsing="false" onAction="#check_login" text="Login" />
-      <Button fx:id="new_acc_button" mnemonicParsing="false" onAction="#make_customer_account" text="Make a new Account" />
+      <Button fx:id="login_page_login_button" mnemonicParsing="false" onAction="#check_login" text="Login">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></Button>
+      <Button fx:id="new_acc_button" mnemonicParsing="false" onAction="#make_customer_account" text="Make a new Account">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></Button>
    </children>
 </VBox>

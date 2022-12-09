@@ -99,6 +99,7 @@ public class ConfirmController {
 
     @FXML
     void movie_cancelled(ActionEvent event) {
+    	//activates when user wishes to cancel the confirmation. User is redirected to login page
     	try {
     		FXMLLoader back = new FXMLLoader();
     		VBox change = back.load(new FileInputStream("src/application/login_page.fxml"));

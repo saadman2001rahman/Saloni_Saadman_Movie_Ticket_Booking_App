@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -9,48 +11,81 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie Ticket" />
+            <Label text="Movie Ticket">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Theatre: " />
-            <Label fx:id="final_theatre_name" text="this will be the theatre number" />
+            <Label fx:id="final_name_of_movie" text="This will be the movie name">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Date: " />
-            <Label fx:id="final_date_and_time" text="this will be the Date and Time" />
+            <Label text="In Theater ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="final_theatre_name" text="this will be the theatre number">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Price:" />
-            <Label fx:id="final_price" text="this will be the price" />
+            <Label text="For: ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="final_name_of_customer" text="this will be the Customer name">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="final_name_of_movie" text="This will be the movie name" />
+            <Label text="Seat Number: ">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="final_seat" text="This will be the seat number">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="For: " />
-            <Label fx:id="final_name_of_customer" text="this will be the Customer name" />
+            <Label text="Time:">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="final_time" text="This will be the time">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Seat Number: " />
-            <Label fx:id="final_seat" text="This will be the seat number" />
-         </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="Time:" />
-            <Label fx:id="final_time" text="This will be the time" />
+            <Label text="Price:">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <Label fx:id="final_price" text="this will be the price">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
    </children>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,46 +8,93 @@
 
 <VBox prefHeight="297.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
    <children>
+      <Label text="Add a Movie">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </Label>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie name" />
-            <TextField fx:id="admin_movie_name" />
+            <Label text="Movie name">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="admin_movie_name">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
             <Label fx:id="movie_name_error_label" />
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie genres" />
-            <TextField fx:id="admin_movie_genre" />
+            <Label text="Movie genres">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="admin_movie_genre">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie Feature" />
-            <TextField fx:id="admin_feature" />
+            <Label text="Movie feature">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="admin_feature">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Theatre Number" />
-            <TextField fx:id="admin_theatre" />
+            <Label text="Theatre number">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="admin_theatre">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
             <Label fx:id="number_error_label" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Movie length in minutes" />
-            <TextField fx:id="admin_movie_len" />
+            <Label text="Movie length in minutes">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="admin_movie_len">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
             <Label fx:id="movie_len_error_label" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Base price" />
-            <TextField fx:id="admin_movie_base_price" />
+            <Label text="Base price">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="admin_movie_base_price">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
             <Label fx:id="price_error_label" />
          </children>
       </HBox>
-      <Button fx:id="add_movie_button" mnemonicParsing="false" onAction="#add_the_movie" text="Add movie" />
+      <Button fx:id="add_movie_button" mnemonicParsing="false" onAction="#add_the_movie" text="Add movie">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></Button>
    </children>
 </VBox>

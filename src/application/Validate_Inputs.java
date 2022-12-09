@@ -39,6 +39,12 @@ public class Validate_Inputs {
 
 	
 	public boolean check_if_movie_exists(String movieName) throws IOException {
+		/*
+		 * Reads the file for movie records and check if a movie name exists in that file. 
+		 * @param: movieName: name of movie we want to find
+		 * @return: true if found, false otherwise
+		 */
+
 		boolean exists = false;
 		BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
 		String line = reader.readLine();
@@ -56,6 +62,11 @@ public class Validate_Inputs {
 	}
 	
 	public boolean check_if_user_exists(String username) throws IOException {
+		/*
+		 * Reads the file for customer records and check if a username exists in that file 
+		 * @param: username: username we want to find
+		 * @return: true if found, false otherwise
+		 */
 		boolean exists = false;
 		BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
 		String line = reader.readLine();
@@ -76,10 +87,10 @@ public class Validate_Inputs {
 	String setValueInt(String valueAsString) {
 
     	/**
-    	 * Convert the value entered into a double value. Will verify whether the number is a real number with no other characters except digits or one decimal point. The number must also be between 0 and 100. If number is valid, returns the project grade, otherwise returns 0.0
+    	 * Convert the value entered into a integer value. Will verify whether the number is an integer with no other characters except digits. The number must also be between 0 and maxvalue. If number is valid, returns sets the number to the value, and returns an empty string, otherwise returns an error message.
     	 * 
-    	 * @param projectinput a String that holds a value entered by the user intended to be a project grade
-    	 * @return the project value entered by the user if it is a valid real number, 0 otherwise
+    	 * @param valueAsString: a String that holds a value entered by the user
+    	 * @return the appropriate error message, if there is no error, empty string is returned
     	 */
 		
 		String errorLaBel = "";
@@ -94,12 +105,12 @@ public class Validate_Inputs {
     		}     		
     	}
     	
-    	//real numbers cannot have more than one decimal or end with a decimal point
+    	//integers numbers cannot have any decimal or end with a decimal point
     	if (decimalcount > 0 || valueAsString.endsWith(".")) {
     		errorLaBel = "Enter a valid integer.";
    			
 		} else {
-			//check to see if real number is within the limits of the grade
+			//check to see if integer is within the limits of the grade
 			integerval = Integer.parseInt(valueAsString);
 	    	if (integerval < 0 || integerval > maxintval) {
 	    		errorLaBel = "Invalid value. Value in field should be between 0 and " + maxintval;
@@ -116,10 +127,10 @@ public class Validate_Inputs {
 	String setValueDouble(String valueAsString) {
 
     	/**
-    	 * Convert the value entered into a double value. Will verify whether the number is a real number with no other characters except digits or one decimal point. The number must also be between 0 and 100. If number is valid, returns the project grade, otherwise returns 0.0
+    	 * Convert the value entered into a double value. Will verify whether the number is a real number with no other characters except digits or one decimal point. The number must also be between 0 and maxvalue. If number is valid, returns sets the number to the value, and returns an empty string, otherwise returns an error message.
     	 * 
-    	 * @param projectinput a String that holds a value entered by the user intended to be a project grade
-    	 * @return the project value entered by the user if it is a valid real number, 0 otherwise
+    	 * @param valueAsString: a String that holds a value entered by the user
+    	 * @return the appropriate error message, if there is no error, empty string is returned
     	 */
 		
 		String errorLaBel = "";
@@ -139,7 +150,7 @@ public class Validate_Inputs {
     		errorLaBel = "Enter a valid double.";
    			
 		} else {
-			//check to see if real number is within the limits of the grade
+			//check to see if real number is within the limits of the value
 			doubleval = Integer.parseInt(valueAsString);
 	    	if (doubleval < 0 || doubleval > maxdoubleval) {
 	    		errorLaBel = "Invalid value. Value in field should be between 0 and " + maxdoubleval;

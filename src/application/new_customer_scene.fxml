@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,30 +8,57 @@
 
 <VBox prefHeight="315.0" prefWidth="385.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.New_Customer_Controller">
    <children>
-      <HBox prefHeight="58.0" prefWidth="385.0">
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Enteryour name" />
-            <TextField fx:id="new_customer_name" />
+            <Label text="Enteryour name">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="new_customer_name">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Enter your age" />
-            <TextField fx:id="new_customer_age" />
+            <Label text="Enter your age">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="new_customer_age">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Enter unique userID" />
-            <TextField fx:id="new_userID" />
+            <Label text="Enter unique userID">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="new_userID">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Enter password" />
-            <TextField fx:id="new_customer_pass" />
+            <Label text="Enter password">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="new_customer_pass">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
-      <Button fx:id="create_account_button" mnemonicParsing="false" onAction="#create_account" text="Create new account" />
+      <Button fx:id="create_account_button" mnemonicParsing="false" onAction="#create_account" text="Create new account">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></Button>
    </children>
 </VBox>

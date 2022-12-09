@@ -40,6 +40,7 @@ public class New_Customer_Controller {
 
     @FXML
     void create_account(ActionEvent event) throws IOException {
+    	//activates when user wishes to create an account with the information they put in. Also checks whether username already exists in file, in which case an errorlabel tells the user to enter another username.
     	BufferedReader reader = new BufferedReader(new FileReader("src/application/List_of_customers.txt"));
     	String line = reader.readLine();
 	    String specialChar = "%%%";
