@@ -5,6 +5,11 @@ public class Seat {
 	private int column;
 //	private String type;
 	
+	/**
+	 * Construct a seat with a row of type char and column of type int (e.g A1, A2, ...)
+	 * @param row
+	 * @param column
+	 */
 	public Seat(char row, int column) {
 		this.row = row;
 		this.column = column;

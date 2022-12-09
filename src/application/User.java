@@ -5,6 +5,12 @@ public class User {
 	private String userName= "";
 	private int age;
 	
+	/**
+	 * Construct User with a unique user ID, name and age
+	 * @param uID
+	 * @param uName
+	 * @param uAge
+	 */
 	public User(String uID, String uName, int uAge) {
 		this.userID = uID;
 		this.userName = uName;

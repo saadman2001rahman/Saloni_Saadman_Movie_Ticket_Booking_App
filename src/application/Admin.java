@@ -25,6 +25,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Admin extends User{
+	
+	/**
+	 * Construct an Admin(sub-class of User) with a unique ID, name and age
+	 * @param uID
+	 * @param uName
+	 * @param uAge
+	 */
 	public Admin(String uID, String uName, int uAge) {
 		super(uID, uName, uAge);
 	}
@@ -73,6 +80,11 @@ public class Admin extends User{
 //	}
 	
 	//https://www.baeldung.com/java-between-dates
+ 	/**
+ 	 * 
+ 	 * @param date
+ 	 * @return
+ 	 */
     private static Calendar getCalendarWithoutTime(Date date) {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
@@ -84,6 +96,12 @@ public class Admin extends User{
         return calendar;
     }
     
+    /**
+     * Generate a list of dates from start date to end date
+     * @param startDate
+     * @param endDate
+     * @return
+     */
     public static ArrayList<Date> getDatesBetween(Date startDate, Date endDate){
     	ArrayList<Date> datesInRange = new ArrayList<>();
     	Calendar calendar = getCalendarWithoutTime(startDate);
@@ -97,7 +115,13 @@ public class Admin extends User{
     	return datesInRange;
     }
 	
-    
+    /**
+     * Create a list of Schedule with each date assigned a particular movie time (e.g [Jan 01 2022 09:00, Jan 01 2022 12:00, ... ])
+     * @param startDate
+     * @param endDate
+     * @param localTimes: Array of fixed scheduled movie times (09:00, 12:00, 15:45, 20:10, 22:20]
+     * @return
+     */
 //    public ArrayList<Schedule> createScheduleList(Date startDate, Date endDate, LocalTime[] localTimes){
 //    	ArrayList<Date> dates = getDatesBetween(startDate, endDate);
 //    	ArrayList<Seat> availSeats = setAllSeats();

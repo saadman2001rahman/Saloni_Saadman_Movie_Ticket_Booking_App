@@ -5,14 +5,13 @@ import java.time.LocalTime;
 
 public class BookingSystem {
 	
-	
+	/**
+	 * Calculates total price of movie, depends on seat selected as well as type of movie 
+	 * @param amovie
+	 * @param seatNum
+	 * @return totalPrice
+	 */
 	public double calculateTotalPrice(Movie amovie, Seat seatNum) {
- 		/*
- 		 * Calculates total price of movie, depends on seat selected as well as type of movie 
- 		 * @param: amovie: Movie, seatNum: Seat
- 		 * @return: totalPrice: double
- 		 */
-
         double totalAmount = amovie.getbasePrice();
         String theater = amovie.getTheaterType();
         
@@ -40,7 +39,15 @@ public class BookingSystem {
        
     }
 
-	
+	/**
+	 * Check if the selected seat is available for booking and also check if customer has enough balance to pay for ticket
+	 * Book a customer movie ticket by removing the seat from a list of available seats in the schedule class and also adjust customer total balance with the price of the ticket
+	 * @param customer
+	 * @param movie
+	 * @param theater
+	 * @param date
+	 * @param seatNumber
+	 */
 //	public void bookMovieTicket(Customer customer, Movie movie,Theater theater, Schedule date, Seat seatNumber){
 //		if(checkBooking(theater, date, seatNumber)) {
 //			double totalPrice = calculateTotalPrice(movie.getbasePrice(), theater, date, date.getSeat(seatNumber));

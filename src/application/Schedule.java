@@ -10,6 +10,12 @@ public class Schedule {
 	private ArrayList<Seat> availableSeats;
 	//for local time: https://www.joda.org/joda-time/apidocs/org/joda/time/LocalTime.html
 	
+	/**
+	 * Construct a schedule with a selected time for a movie play-time and assigns a list of seats to it
+	 * @param date
+	 * @param hourMin
+	 * @param availableSeats
+	 */
 	public Schedule(Date date, LocalTime hourMin, ArrayList<Seat> availableSeats) {
 		this.scheduledDate =date;
 		this.hourMin =hourMin;
@@ -17,6 +23,12 @@ public class Schedule {
 		this.scheduledDate.setMinutes(hourMin.getMinute());
 		this.availableSeats = availableSeats;
 	}
+	
+	/**
+	 * Check if a selected seat for a particular date is booked
+	 * @param selectedSeat
+	 * @return
+	 */
 	public Boolean checkBooking(Seat selectedSeat) {
 		for(Seat availSeat : this.availableSeats) {
 			if(availSeat.checkEqual(selectedSeat)) {
@@ -26,6 +38,10 @@ public class Schedule {
 		return false; //seat is booked
 	}
 	
+	/**
+	 * Book seat by removing it from list of available seats
+	 * @param selectedSeat
+	 */
 	public void bookSeat(Seat selectedSeat) {
 		for(Seat seat : this.availableSeats) {
 			if(seat.checkEqual(selectedSeat)) {
@@ -35,6 +51,11 @@ public class Schedule {
 		}
 	}
 	
+	/**
+	 * Get seat from the schedule
+	 * @param selectedSeat
+	 * @return
+	 */
 	public Seat getSeat(Seat selectedSeat) {
 		for(Seat seat: this.availableSeats) {
 			if(seat.checkEqual(selectedSeat)) {
@@ -44,6 +65,10 @@ public class Schedule {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return scheduleDate as a string
+	 */
 	public String getString() {
 		return this.scheduledDate.toString();
 	}
