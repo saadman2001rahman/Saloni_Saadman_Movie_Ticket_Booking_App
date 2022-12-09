@@ -98,7 +98,7 @@ public class MovieTicketController {
         		
         		theadmincontrols = adminLoader.getController();
         		theadmincontrols.setPrimaryStage(applicationStage);
-        		theadmincontrols.setMyScene(new Scene(adminscene));
+        		theadmincontrols.setMyScene(new Scene(adminscene, 500, 500));
         		theadmincontrols.setNextController(this);
         		
         		
@@ -325,7 +325,7 @@ public class MovieTicketController {
     		
     		newcustomercontrols = newcustomerloader.getController();
     		newcustomercontrols.setPrimaryStage(applicationStage);
-    		newcustomercontrols.setMyScene(new Scene(newcustomerscene));
+    		newcustomercontrols.setMyScene(new Scene(newcustomerscene, 500, 500));
     		newcustomercontrols.setNextController(this);
     		
     		
@@ -435,7 +435,7 @@ public class MovieTicketController {
 
     		confirmcontroller = loader.getController();
     		confirmcontroller.setPrimaryStage(applicationStage);
-    		confirmcontroller.setMyScene(new Scene(confirm));
+    		confirmcontroller.setMyScene(new Scene(confirm, 500, 500));
     		confirmcontroller.setCustomer(acustomer);
     		confirmcontroller.setMovie(thismovie);
     		confirmcontroller.m_confirm_price();

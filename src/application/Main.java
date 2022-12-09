@@ -19,7 +19,7 @@ public class Main extends Application {
 			controller.setPrimaryStage(primaryStage);
 			
 
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,500,500);
 			
 			controller.setMyScene(scene);
 

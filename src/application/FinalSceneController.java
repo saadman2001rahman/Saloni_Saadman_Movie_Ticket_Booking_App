@@ -12,8 +12,8 @@ public class FinalSceneController {
     @FXML
     private Label final_name_of_movie;
 
-    @FXML
-    private Label final_date_and_time;
+//    @FXML
+//    private Label final_date_and_time;
 
     @FXML
     private Label final_price;
@@ -43,10 +43,10 @@ public class FinalSceneController {
     	final_name_of_movie.setText(name);
     }
     
-    void setDateAndTime() {
-    	Date thisDate = new Date();
-    	final_date_and_time.setText(thisDate.toString());
-    }
+//    void setDateAndTime() {
+//    	Date thisDate = new Date();
+//    	final_date_and_time.setText(thisDate.toString());
+//    }
     
     void setNameOfTheatre(String name) {
     	final_theatre_name.setText(name);
