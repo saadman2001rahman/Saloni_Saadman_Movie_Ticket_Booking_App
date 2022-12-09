@@ -198,38 +198,39 @@ public class MovieTicketController {
     		String movieGenre = line.split("%%%")[6];
     		movieGenre = movieGenre.substring(0, movieGenre.length() - 1);
     		String[] words = movieGenre.split(" ");
-//    		for (String word: words) {
-//    			for (String aname: text.split(" ")) {
-		    		if (movieGenre.contains(text)) {
-		    			totalmovies++;
-		    			
-		        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[6].split(" "), Integer.parseInt(line.split("%%%")[4]), Double.parseDouble(line.split("%%%")[5]), new Theater(Integer.parseInt(line.split("%%%")[2]), line.split("%%%")[3]));
+    		for (String word: text.split(" ")) {
+	    		if (movieGenre.contains(word)) {
+	    			totalmovies++;
+	    			
+	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[6].split(" "), Integer.parseInt(line.split("%%%")[4]), Double.parseDouble(line.split("%%%")[5]), new Theater(Integer.parseInt(line.split("%%%")[2]), line.split("%%%")[3]));
+	        		
+	        		HBox moviecontainer = new HBox();
+	        		Label moviename = new Label(line.split("%%%")[0]);
+	        		Label moviegenre = new Label("Genres: " + line.split("%%%")[6]);
+	        		Label movieprice = new Label("base price: $" + line.split("%%%")[5]);
+//	        		Label movietheatre = new Label(line.split("%%%")[2]);
+	        		Label movieduration = new Label("Movie duration: " + line.split("%%%")[4]);
+//	        		Label movierating = new Label(line.split("%%%")[3]);
+	        		
+	        		moviename.setPadding(margin);
+	        		moviegenre.setPadding(margin);
+	        		movieprice.setPadding(margin);
+//	        		movietheatre.setPadding(margin);
+	        		movieduration.setPadding(margin);
+//	        		movierating.setPadding(margin);
+	
+	        		Button watchButton = new Button("Watch this");
+	        		
+	        		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
+	        		watchButton.setPadding(margin);
+	
+	        		moviecontainer.getChildren().addAll(moviename, movieduration, movieprice, moviegenre, watchButton);
+	        		
+	        		searchContainer.getChildren().addAll(moviecontainer);
 		        		
-		        		HBox moviecontainer = new HBox();
-		        		Label moviename = new Label(line.split("%%%")[0]);
-		        		Label moviegenre = new Label("Genres: " + line.split("%%%")[6]);
-		        		Label movieprice = new Label("base price: $" + line.split("%%%")[5]);
-	//	        		Label movietheatre = new Label(line.split("%%%")[2]);
-		        		Label movieduration = new Label("Movie duration: " + line.split("%%%")[4]);
-	//	        		Label movierating = new Label(line.split("%%%")[3]);
-		        		
-		        		moviename.setPadding(margin);
-		        		moviegenre.setPadding(margin);
-		        		movieprice.setPadding(margin);
-	//	        		movietheatre.setPadding(margin);
-		        		movieduration.setPadding(margin);
-	//	        		movierating.setPadding(margin);
-		
-		        		Button watchButton = new Button("Watch this");
-		        		
-		        		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
-		        		watchButton.setPadding(margin);
-		
-		        		moviecontainer.getChildren().addAll(moviename, movieduration, movieprice, moviegenre, watchButton);
-		        		
-		        		searchContainer.getChildren().addAll(moviecontainer);
-		        		
-		    		}
+	    		}
+	    		break;
+    		}
 //		    		break;
 //    			}
     			
