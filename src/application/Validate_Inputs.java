@@ -68,11 +68,11 @@ public class Validate_Inputs {
 		 * @return: true if found, false otherwise
 		 */
 		boolean exists = false;
-		BufferedReader reader = new BufferedReader(new FileReader("src/application/ListOfMovies.txt"));
+		BufferedReader reader = new BufferedReader(new FileReader("src/application/List_of_customers.txt"));
 		String line = reader.readLine();
 		while (line != null) {
 			String name = line.split("%%%")[0];
-			if (line.equals(username)) {
+			if (name.equals(username)) {
 				exists = true;				
 			}
 			
@@ -83,7 +83,7 @@ public class Validate_Inputs {
 		return exists;
 	}
 	
-	
+	//This code has been developed with the help of class material, specifically validate user inputs topic from grade calculator
 	String setValueInt(String valueAsString) {
 
     	/**
@@ -124,6 +124,7 @@ public class Validate_Inputs {
     
 	}
 	
+	//This code has been developed with the help of class material, specifically validate user inputs topic from grade calculator
 	String setValueDouble(String valueAsString) {
 
     	/**

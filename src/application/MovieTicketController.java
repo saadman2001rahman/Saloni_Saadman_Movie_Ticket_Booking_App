@@ -67,7 +67,7 @@ public class MovieTicketController {
 
 
     @FXML 
-    Button new_acc_button;
+    private Button new_acc_button;
     
     private Customer thiscustomer;
     
@@ -98,7 +98,7 @@ public class MovieTicketController {
         		
         		theadmincontrols = adminLoader.getController();
         		theadmincontrols.setPrimaryStage(applicationStage);
-        		theadmincontrols.setMyScene(new Scene(adminscene));
+        		theadmincontrols.setMyScene(new Scene(adminscene, 500, 500));
         		theadmincontrols.setNextController(this);
         		
         		
@@ -198,8 +198,8 @@ public class MovieTicketController {
     		String movieGenre = line.split("%%%")[6];
     		movieGenre = movieGenre.substring(0, movieGenre.length() - 1);
     		String[] words = movieGenre.split(" ");
-    		for (String word: words) {
-	    		if (word.toLowerCase().equals(text.toLowerCase()) || text.equals(movieGenre)) {
+    		for (String word: text.split(" ")) {
+	    		if (movieGenre.contains(word)) {
 	    			totalmovies++;
 	    			
 	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[6].split(" "), Integer.parseInt(line.split("%%%")[4]), Double.parseDouble(line.split("%%%")[5]), new Theater(Integer.parseInt(line.split("%%%")[2]), line.split("%%%")[3]));
@@ -227,9 +227,14 @@ public class MovieTicketController {
 	        		moviecontainer.getChildren().addAll(moviename, movieduration, movieprice, moviegenre, watchButton);
 	        		
 	        		searchContainer.getChildren().addAll(moviecontainer);
-	        		
+		        		
 	    		}
+	    		break;
     		}
+//		    		break;
+//    			}
+    			
+//    		}
     		line = reader.readLine();
     	}
     	
@@ -261,38 +266,37 @@ public class MovieTicketController {
     	while (line != null) {
     		String movieName = line.split("%%%")[0];
     		String[] words = movieName.split(" ");
-    		for (String word: words) {
-	    		if (word.toLowerCase().equals(text.toLowerCase()) || text.toLowerCase().equals(movieName.toLowerCase())) {
-	        		totalmovies++;
-	        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[6].split(" "), Integer.parseInt(line.split("%%%")[4]), Double.parseDouble(line.split("%%%")[5]), new Theater(Integer.parseInt(line.split("%%%")[2]), line.split("%%%")[3]));
-	        		
-	        		HBox moviecontainer = new HBox();
-	        		Label moviename = new Label(line.split("%%%")[0]);
-	        		Label moviegenre = new Label("Genres: " + line.split("%%%")[6]);
-	        		Label movieprice = new Label("base price: $" + line.split("%%%")[5]);
+//    		for (String word: words) {
+    		if (movieName.contains(text)) {
+        		totalmovies++;
+        		Movie amovie = new Movie(line.split("%%%")[0], line.split("%%%")[6].split(" "), Integer.parseInt(line.split("%%%")[4]), Double.parseDouble(line.split("%%%")[5]), new Theater(Integer.parseInt(line.split("%%%")[2]), line.split("%%%")[3]));
+        		
+        		HBox moviecontainer = new HBox();
+        		Label moviename = new Label(line.split("%%%")[0]);
+        		Label moviegenre = new Label("Genres: " + line.split("%%%")[6]);
+        		Label movieprice = new Label("base price: $" + line.split("%%%")[5]);
 //	        		Label movietheatre = new Label(line.split("%%%")[2]);
-	        		Label movieduration = new Label("Movie duration: " + line.split("%%%")[4]);
+        		Label movieduration = new Label("Movie duration: " + line.split("%%%")[4]);
 //	        		Label movierating = new Label(line.split("%%%")[3]);
-	        		
-	        		moviename.setPadding(margin);
-	        		moviegenre.setPadding(margin);
-	        		movieprice.setPadding(margin);
+        		
+        		moviename.setPadding(margin);
+        		moviegenre.setPadding(margin);
+        		movieprice.setPadding(margin);
 //	        		movietheatre.setPadding(margin);
-	        		movieduration.setPadding(margin);
+        		movieduration.setPadding(margin);
 //	        		movierating.setPadding(margin);
-	
-	        		Button watchButton = new Button("Watch this");
-	        		
-	        		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
-	        		watchButton.setPadding(margin);
-	
-	        		moviecontainer.getChildren().addAll(moviename, movieduration, movieprice, moviegenre, watchButton);
-	        		
-	        		searchContainer.getChildren().addAll(moviecontainer);
-	        		
-	    		}
-	    		break;
+
+        		Button watchButton = new Button("Watch this");
+        		
+        		watchButton.setOnAction(watch -> changetoconfirmscene(amovie, thiscustomer));
+        		watchButton.setPadding(margin);
+
+        		moviecontainer.getChildren().addAll(moviename, movieduration, movieprice, moviegenre, watchButton);
+        		
+        		searchContainer.getChildren().addAll(moviecontainer);
+        		
     		}
+//    		}
             line = reader.readLine();
 
     	}
@@ -321,7 +325,7 @@ public class MovieTicketController {
     		
     		newcustomercontrols = newcustomerloader.getController();
     		newcustomercontrols.setPrimaryStage(applicationStage);
-    		newcustomercontrols.setMyScene(new Scene(newcustomerscene));
+    		newcustomercontrols.setMyScene(new Scene(newcustomerscene, 500, 500));
     		newcustomercontrols.setNextController(this);
     		
     		
@@ -431,7 +435,7 @@ public class MovieTicketController {
 
     		confirmcontroller = loader.getController();
     		confirmcontroller.setPrimaryStage(applicationStage);
-    		confirmcontroller.setMyScene(new Scene(confirm));
+    		confirmcontroller.setMyScene(new Scene(confirm, 500, 500));
     		confirmcontroller.setCustomer(acustomer);
     		confirmcontroller.setMovie(thismovie);
     		confirmcontroller.m_confirm_price();

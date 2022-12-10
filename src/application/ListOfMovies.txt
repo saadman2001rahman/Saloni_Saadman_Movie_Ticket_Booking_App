@@ -6,3 +6,4 @@ Love Rosie%%%In theater: %%%8%%%Dolby%%%120%%%15.0%%%romance
 Rush Hour%%%In theater: %%%1%%%Dolby%%%120%%%15.0%%%comedy 
 Movie 3%%%In theater: %%%9%%%3D%%%120%%%15.0%%%action comedey 
 Movie one two%%%In theater: %%%8%%%3D%%%300%%%30.0%%%action comedy 
+Avengers%%%In theater: %%%10%%%3D%%%150%%%30.0%%%action adventure comedy romance 

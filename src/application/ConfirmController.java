@@ -70,7 +70,7 @@ public class ConfirmController {
     		
         	nextController.setNameOfCustomer(thiscustomer.getName());
         	nextController.setNameOfTheatre(thismovie.getMovieName());
-        	nextController.setDateAndTime();
+//        	nextController.setDateAndTime();
         	nextController.setNameOfMovie(thismovie.getMovieName());
         	
         	
