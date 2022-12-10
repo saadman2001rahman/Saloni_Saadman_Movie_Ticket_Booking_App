@@ -83,7 +83,7 @@ public class Validate_Inputs {
 		return exists;
 	}
 	
-	
+	//This code has been developed with the help of class material, specifically validate user inputs topic from grade calculator
 	String setValueInt(String valueAsString) {
 
     	/**
@@ -124,6 +124,7 @@ public class Validate_Inputs {
     
 	}
 	
+	//This code has been developed with the help of class material, specifically validate user inputs topic from grade calculator
 	String setValueDouble(String valueAsString) {
 
     	/**

@@ -67,7 +67,7 @@ public class MovieTicketController {
 
 
     @FXML 
-    Button new_acc_button;
+    private Button new_acc_button;
     
     private Customer thiscustomer;
     
